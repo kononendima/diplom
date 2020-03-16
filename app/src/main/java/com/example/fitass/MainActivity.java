@@ -1,38 +1,44 @@
 package com.example.fitass;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ButtonBarLayout;
-import android.app.Fragment;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 
-import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     Button btnAdd;
-
+    BottomNavigationView bottomNavigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnAdd = (Button) findViewById(R.id.activity_main_btnAdd);
-        btnAdd.setOnClickListener(this);
 
-    }
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.ic_main:
+                        break;
+                    case R.id.ic_activity:
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.activity_main_btnAdd:
-                Intent intent=new Intent(this,Calory_list.class);
-                startActivity(intent);
-        }
+                        break;
+                    case R.id.ic_eat:
+                        Intent b = new Intent(MainActivity.this,Calory_list.class);
+                        startActivity(b);
+                        break;
+                }
+
+                return false;
+            }
+        });
     }
 }

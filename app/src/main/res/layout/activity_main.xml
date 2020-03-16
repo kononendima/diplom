@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/activity_main_btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginBottom="132dp"
-        android:text="Добавить"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,7 +20,14 @@
         app:itemTextColor="@color/White"
         app:menu="@menu/bottom_navigation_menu"
         />
-        </FrameLayout>
+
+        <Button
+            android:id="@+id/activity_main_btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Добавить" />
+
+    </FrameLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
