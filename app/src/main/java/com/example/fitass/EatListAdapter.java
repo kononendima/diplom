@@ -28,25 +28,25 @@ public class EatListAdapter extends RecyclerView.Adapter<EatListAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(EatListAdapter.ViewHolder holder, int position) {
-        EatItem phone = phones.get(position);
-        holder.imageView.setImageResource(phone.getImage());
-        holder.nameView.setText(phone.getName());
-        holder.companyView.setText(phone.getCompany());
+        EatItem eatItem = eatItems.get(position);
+        holder.type.setText(eatItem.getType());
+        holder.date.setText(eatItem.getDate());
+        holder.calory.setText(eatItem.getCalory());
     }
 
     @Override
     public int getItemCount() {
-        return phones.size();
+        return eatItems.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        final ImageView imageView;
-        final TextView nameView, companyView;
+
+        final TextView type, date,calory;
         ViewHolder(View view){
             super(view);
-            imageView = (ImageView)view.findViewById(R.id.image);
-            nameView = (TextView) view.findViewById(R.id.name);
-            companyView = (TextView) view.findViewById(R.id.company);
+            type = (TextView) view.findViewById(R.id.eat_list_item_textViewType);
+            date = (TextView) view.findViewById(R.id.eat_list_item_textViewDate);
+            calory = (TextView) view.findViewById(R.id.eat_list_item_textViewCalory);
         }
     }
 }

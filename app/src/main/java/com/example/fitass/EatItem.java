@@ -5,9 +5,15 @@ import java.util.Date;
 
 public class EatItem {
     private String date;
-    private ArrayList<String> eat= new ArrayList<>();
-    private int calory;
-    private String type;
+    private String calory;
+    private String eat;
+    public EatItem(String eat, String date, String calory) {
+        this.date = date;
+        this.calory = calory;
+        this.eat = eat;
+    }
+
+
 
     public String getDate() {
         return date;
@@ -17,27 +23,21 @@ public class EatItem {
         this.date = date;
     }
 
-    public ArrayList<String> getEat() {
-        return eat;
-    }
 
-    public void setEat(ArrayList<String> eat) {
-        this.eat = eat;
-    }
 
-    public int getCalory() {
+    public String getCalory() {
         return calory;
     }
 
-    public void setCalory(int calory) {
+    public void setCalory(String calory) {
         this.calory = calory;
     }
 
     public String getType() {
-        return type;
+        return eat;
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.eat = type;
     }
 }

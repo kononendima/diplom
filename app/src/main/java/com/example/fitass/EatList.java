@@ -1,12 +1,12 @@
 package com.example.fitass;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
 
 import android.app.Dialog;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,7 +15,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EatList extends AppCompatActivity implements View.OnClickListener {
+
+    List<EatItem> eat = new ArrayList<>();
     Dialog dialog;
     Spinner spinner;
 
@@ -27,9 +32,16 @@ public class EatList extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eat_list);
 
+
+
         Button btnAdd=(Button)findViewById(R.id.activity_calory_list_btnAdd);
         btnAdd.setOnClickListener(this);
-
+        setInitialData();
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.activity_eat_list_recyclerView);
+        // создаем адаптер
+        EatListAdapter adapterEat = new EatListAdapter(this, eat);
+        // устанавливаем для списка адаптер
+        recyclerView.setAdapter(adapterEat);
         dialog = new Dialog(EatList.this);
 
 
@@ -42,10 +54,10 @@ public class EatList extends AppCompatActivity implements View.OnClickListener {
         btnCreate.setOnClickListener(this);
         spinner=(Spinner)dialog.findViewById(R.id.calory_list_item_add_spinnerChoice);
         // адаптер
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapterSpinner = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
+        adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spinner.setAdapter(adapter);
+        spinner.setAdapter(adapterSpinner);
         // заголовок
         spinner.setPrompt("Title");
         // выделяем элемент
@@ -82,6 +94,13 @@ public class EatList extends AppCompatActivity implements View.OnClickListener {
                 Toast.makeText(getBaseContext(), " Получилось "+a*b, Toast.LENGTH_SHORT).show();
 
         }
+    }
+    private void setInitialData(){
+
+        eat.add(new EatItem ("fdsfdsf", "123","fsdfdsf"));
+        eat.add(new EatItem ("fdsfdsf", "123","fsdfdsf"));
+        eat.add(new EatItem ("fdsfdsf", "123","fsdfdsf"));
+        eat.add(new EatItem ("fdsfdsf", "123","fsdfdsf"));
     }
 
 }
