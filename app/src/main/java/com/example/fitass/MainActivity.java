@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
                         break;
                     case R.id.ic_eat:
-                        Intent b = new Intent(MainActivity.this,Calory_list.class);
+                        Intent b = new Intent(MainActivity.this,EatList.class);
                         startActivity(b);
                         break;
                 }
@@ -40,5 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
     }
+
 }
