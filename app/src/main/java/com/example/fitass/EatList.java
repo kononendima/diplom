@@ -16,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class EatList extends AppCompatActivity implements View.OnClickListener {
@@ -34,23 +35,24 @@ public class EatList extends AppCompatActivity implements View.OnClickListener {
 
 
 
-        Button btnAdd=(Button)findViewById(R.id.activity_calory_list_btnAdd);
+        Button btnAdd=(Button)findViewById(R.id.activity_eat_list_btnAdd);
         btnAdd.setOnClickListener(this);
-        setInitialData();
+        EatItemManager eatItemManager = new EatItemManager(this);
+        List<EatItem> eatItems = eatItemManager.getEatItemsList();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.activity_eat_list_recyclerView);
         // создаем адаптер
-        EatListAdapter adapterEat = new EatListAdapter(this, eat);
+        EatListAdapter adapterEat = new EatListAdapter(this, eatItems);
         // устанавливаем для списка адаптер
         recyclerView.setAdapter(adapterEat);
         dialog = new Dialog(EatList.this);
 
 
-        // Установите заголовок
+
         dialog.setTitle("Заголовок диалога");
-        // Передайте ссылку на разметку
-        dialog.setContentView(R.layout.eat_list_item_add);
+
+        dialog.setContentView(R.layout.eat_list_item_add);// ссылка на разметку
         editTextWeight=(EditText)dialog.findViewById(R.id.calory_list_item_add_editTextWeight);
-        btnCreate=(Button)dialog.findViewById(R.id.calory_list_item_add_btnAdd);
+        btnCreate=(Button)dialog.findViewById(R.id.eat_list_item_add_btnAdd);
         btnCreate.setOnClickListener(this);
         spinner=(Spinner)dialog.findViewById(R.id.calory_list_item_add_spinnerChoice);
         // адаптер
@@ -68,7 +70,7 @@ public class EatList extends AppCompatActivity implements View.OnClickListener {
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {
                 // показываем позиция нажатого элемента
-                Toast.makeText(getBaseContext(), "Position = " + position, Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getBaseContext(), "Position = " + position, Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
@@ -81,26 +83,24 @@ public class EatList extends AppCompatActivity implements View.OnClickListener {
 
     public void onClick(View v)
     {
+        Date date;
         switch (v.getId()) {
-            case R.id.activity_calory_list_btnAdd:
+            case R.id.activity_eat_list_btnAdd:
                 dialog.show();
                 break;
-            case R.id.calory_list_item_add_btnAdd:
+            case R.id.eat_list_item_add_btnAdd:
+                date=new Date();
+                String stringDate=date.toString();
 
-                String stringEditTextWeight= editTextWeight.getText().toString();
-                int a=Integer.parseInt(stringEditTextWeight);
                 String stringSpinner=spinner.getSelectedItem().toString();
-                int b=Integer.parseInt(stringSpinner);
-                Toast.makeText(getBaseContext(), " Получилось "+a*b, Toast.LENGTH_SHORT).show();
 
+                Toast.makeText(getBaseContext(), " Получилось "+stringSpinner, Toast.LENGTH_SHORT).show();
+                String result=stringSpinner;
+
+                EatItemManager eatItemManager=new EatItemManager(this);
+                eatItemManager.addEatItem(new EatItem(stringSpinner,stringDate,"Калорий "+result));
         }
     }
-    private void setInitialData(){
 
-        eat.add(new EatItem ("fdsfdsf", "123","fsdfdsf"));
-        eat.add(new EatItem ("fdsfdsf", "123","fsdfdsf"));
-        eat.add(new EatItem ("fdsfdsf", "123","fsdfdsf"));
-        eat.add(new EatItem ("fdsfdsf", "123","fsdfdsf"));
-    }
 
 }

@@ -29,7 +29,7 @@ public class EatListAdapter extends RecyclerView.Adapter<EatListAdapter.ViewHold
     @Override
     public void onBindViewHolder(EatListAdapter.ViewHolder holder, int position) {
         EatItem eatItem = eatItems.get(position);
-        holder.type.setText(eatItem.getType());
+        holder.type.setText(eatItem.getEat());
         holder.date.setText(eatItem.getDate());
         holder.calory.setText(eatItem.getCalory());
     }

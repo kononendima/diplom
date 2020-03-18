@@ -17,7 +17,7 @@
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/calory_list_item_add_btnAdd"
+        android:id="@+id/eat_list_item_add_btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
