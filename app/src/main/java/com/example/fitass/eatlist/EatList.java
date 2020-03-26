@@ -1,9 +1,10 @@
-package com.example.fitass;
+package com.example.fitass.eatlist;
+//import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
+import java.util.List;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 
 
 import android.app.Dialog;
@@ -15,9 +16,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.fitass.BottomBar;
+import com.example.fitass.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 public class EatList extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,7 +36,9 @@ public class EatList extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eat_list);
-
+        BottomNavigationView navigation1 = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        BottomBar bottomBarEat=new BottomBar(navigation1,this);
+        bottomBarEat.Buttom();
 
 
         Button btnAdd=(Button)findViewById(R.id.activity_eat_list_btnAdd);

@@ -2,37 +2,46 @@ package com.example.fitass;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 
+import com.example.fitass.eatlist.EatList;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class BottomBar {
-        Context mContext;
-    public void Buttom(Context context) {
-        mContext=context;
+    BottomNavigationView navigation;
+    Context context;
+    View view;
+    Intent b;
+        Button button;
+    public BottomBar(BottomNavigationView navigation, Context context) {
+        this.navigation = navigation;
+        this.context = context;
     }
 
-    BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener()
+    public void Buttom() {
+        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.ic_main:
+                        break;
+                    case R.id.ic_activity:
+                        b=new Intent(context,ActivityList.class);
+                        context.startActivity(b);
+                        break;
+                    case R.id.ic_eat:
 
-    {
-        @Override
-        public boolean onNavigationItemSelected (@NonNull MenuItem item){
-        switch (item.getItemId()) {
-            case R.id.ic_main:
-                break;
-            case R.id.ic_activity:
+                        b = new Intent(context, EatList.class);
+                        context.startActivity(b);
+                        break;
+                }
 
-                break;
-            case R.id.ic_eat:
-                Intent b = new Intent(MainActivity.this, EatList.class);
-                startActivity(b);
-                break;
-        }
-
-        return false;
+                return false;
+            }
+        });
     }
-    });
-}
 }

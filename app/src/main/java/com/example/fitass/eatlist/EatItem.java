@@ -1,4 +1,4 @@
-package com.example.fitass;
+package com.example.fitass.eatlist;
 
 import java.util.ArrayList;
 import java.util.Date;
