@@ -1,9 +1,11 @@
-package com.example.fitass;
+package com.example.fitass.eatlist;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.fitass.DataBaseHelper;
 
 import java.util.ArrayList;
 import java.util.List;

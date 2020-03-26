@@ -1,4 +1,4 @@
-package com.example.fitass;
+package com.example.fitass.eatlist;
 
 import android.database.Cursor;
 import android.database.CursorWrapper;

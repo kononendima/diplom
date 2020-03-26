@@ -22,24 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.ic_main:
-                        break;
-                    case R.id.ic_activity:
+        BottomBar bottomBar=new BottomBar(navigation,this);
+        bottomBar.Buttom();
 
-                        break;
-                    case R.id.ic_eat:
-                        Intent b = new Intent(MainActivity.this,EatList.class);
-                        startActivity(b);
-                        break;
-                }
-
-                return false;
-            }
-        });
 
     }
 
