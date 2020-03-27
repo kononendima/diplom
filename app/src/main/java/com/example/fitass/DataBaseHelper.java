@@ -19,6 +19,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 EatItem.EAT+ ", "+
                 EatItem.DATE+","+
                 EatItem.CALORY+")");
+
+        db.execSQL("create table "+User.TABLE_NAME+" ("+
+                "_id integer primary key autoincrement, " +
+                User.LOGIN+ ", "+
+                User.PASSWORD+","+
+                User.STEPS_ID+","+
+                User.CALORY_ID+","+
+                User.HEIGHT+","+
+                User.WEIGHT+","+
+                User.LIFESTYLE+")");
     }
 
     @Override

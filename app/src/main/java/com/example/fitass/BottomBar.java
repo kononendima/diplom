@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 
+import com.example.fitass.activitypage.ActivityList;
 import com.example.fitass.eatlist.EatList;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -30,7 +31,7 @@ public class BottomBar {
                     case R.id.ic_main:
                         break;
                     case R.id.ic_activity:
-                        b=new Intent(context,ActivityList.class);
+                        b=new Intent(context, ActivityList.class);
                         context.startActivity(b);
                         break;
                     case R.id.ic_eat:
