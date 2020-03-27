@@ -1,4 +1,4 @@
-package com.example.fitass;
+package com.example.fitass.activitypage;
 
 import com.google.gson.annotations.SerializedName;
 

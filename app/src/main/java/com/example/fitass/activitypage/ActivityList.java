@@ -1,4 +1,4 @@
-package com.example.fitass;
+package com.example.fitass.activitypage;
 
 
 
@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.fitass.BottomBar;
+import com.example.fitass.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
@@ -22,7 +26,9 @@ public class ActivityList extends AppCompatActivity {
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
+        BottomNavigationView navigation1 = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        BottomBar bottomBarActivity=new BottomBar(navigation1,this);
+        bottomBarActivity.Buttom();
         textViewResult =(TextView)findViewById(R.id.textViewResult);
         mm();
 

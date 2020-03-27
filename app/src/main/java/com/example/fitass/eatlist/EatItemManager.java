@@ -30,7 +30,7 @@ public class EatItemManager {
         mDatabase=new
                 DataBaseHelper(mContext).getWritableDatabase();
     }
-    private EatCursorWrapper getEatItemsCursor(String whereClause,//Получаем объект(курсор) до первой строки
+    private EatCursorWrapper getEatItemsCursor(String whereClause,//Имеем объект(курсор) до первой строки
                                               String[] wereArgs){
         Cursor cursor=mDatabase.query(EatItem.TABLE_NAME,
                 null,whereClause,wereArgs,null,null,null);
