@@ -8,10 +8,10 @@
 
     <EditText
         android:id="@+id/activity_sign_id_EditTextLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="236dp"
+        android:layout_width="212dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="264dp"
         android:ems="10"
         android:hint="Login"
         android:inputType="textPersonName"
@@ -21,10 +21,10 @@
 
     <EditText
         android:id="@+id/activity_sign_id_EditTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="328dp"
+        android:layout_width="212dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="332dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPersonName"
@@ -36,9 +36,19 @@
         android:id="@+id/activity_sign_id_btnEntrance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="416dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="468dp"
         android:text="Войти"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/activity_sign_in_textViewRegistration"
+        android:layout_width="212dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="392dp"
+        android:text="Еще на зарегестрировались? \n          Сделайте это здесь"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

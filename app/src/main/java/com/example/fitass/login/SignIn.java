@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.fitass.MainActivity;
 import com.example.fitass.R;
@@ -15,6 +16,7 @@ import com.example.fitass.UserManager;
 
 public class SignIn extends AppCompatActivity implements View.OnClickListener {
     EditText editTextLogin,editTextPassword;
+    TextView textViewRegistration;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,8 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         editTextPassword=(EditText)findViewById(R.id.activity_sign_id_EditTextPassword);
         Button btn=(Button)findViewById(R.id.activity_sign_id_btnEntrance);
         btn.setOnClickListener(this);
+        textViewRegistration=(TextView)findViewById(R.id.activity_sign_in_textViewRegistration);
+        textViewRegistration.setOnClickListener(this);
 
 
     }
@@ -44,6 +48,9 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
                     startActivity(intent);
                 }
                 break;
+            case R.id.activity_sign_in_textViewRegistration:
+                Intent intent=new Intent(this, SignUp.class);
+                startActivity(intent);
         }
     }
 }
