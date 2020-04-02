@@ -18,14 +18,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "_id integer primary key autoincrement, " +
                 EatItem.EAT+ ", "+
                 EatItem.DATE+","+
-                EatItem.CALORY+")");
+                EatItem.CALORIE+")");
 
         db.execSQL("create table "+User.TABLE_NAME+" ("+
                 "_id integer primary key autoincrement, " +
                 User.LOGIN+ ", "+
                 User.PASSWORD+","+
                 User.STEPS_ID+","+
-                User.CALORY_ID+","+
+                User.CALORIE_ID+","+
                 User.HEIGHT+","+
                 User.WEIGHT+","+
                 User.LIFESTYLE+")");
@@ -33,7 +33,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + EatItem.TABLE_NAME);
+
+       // db.execSQL("DROP TABLE IF EXISTS " + EatItem.TABLE_NAME);
         onCreate(db);
     }
 }

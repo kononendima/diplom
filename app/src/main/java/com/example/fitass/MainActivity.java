@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         BottomBar bottomBar=new BottomBar(navigation,this);
         bottomBar.Buttom();
-      //  this.deleteDatabase("DataBase.db");
+        this.deleteDatabase("DataBase.db"); //Удаление бд
         SQLiteDatabase mDatabase=new
                 DataBaseHelper(this).getWritableDatabase();
 

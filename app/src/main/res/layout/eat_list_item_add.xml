@@ -4,12 +4,12 @@
     android:layout_height="match_parent">
 
     <Spinner
-        android:id="@+id/calory_list_item_add_spinnerChoice"
+        android:id="@+id/calorie_list_item_add_spinnerChoice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/calory_list_item_add_editTextWeight"
+        android:id="@+id/calorie_list_item_add_editTextWeight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"

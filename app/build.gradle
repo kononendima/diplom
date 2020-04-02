@@ -34,7 +34,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'com.google.android.material:material:1.1.0-alpha10'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
-    debugCompile 'com.amitshekhar.android:debug-db:1.0.0'
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.0'
 //Штука для просмотра базы данных через хром (айпи телефона, потом:8080)
     implementation 'androidx.core:core:1.2.0'
 

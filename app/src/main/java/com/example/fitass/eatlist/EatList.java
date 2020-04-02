@@ -57,10 +57,10 @@ public class EatList extends AppCompatActivity implements View.OnClickListener {
         dialog.setTitle("Заголовок диалога");
 
         dialog.setContentView(R.layout.eat_list_item_add);// ссылка на разметку
-        editTextWeight=(EditText)dialog.findViewById(R.id.calory_list_item_add_editTextWeight);
+        editTextWeight=(EditText)dialog.findViewById(R.id.calorie_list_item_add_editTextWeight);
         btnCreate=(Button)dialog.findViewById(R.id.eat_list_item_add_btnAdd);
         btnCreate.setOnClickListener(this);
-        spinner=(Spinner)dialog.findViewById(R.id.calory_list_item_add_spinnerChoice);
+        spinner=(Spinner)dialog.findViewById(R.id.calorie_list_item_add_spinnerChoice);
         // адаптер
         ArrayAdapter<String> adapterSpinner = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
         adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
