@@ -11,6 +11,7 @@ import android.app.Dialog;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -27,7 +28,7 @@ public class EatList extends AppCompatActivity implements View.OnClickListener {
 
     List<EatItem> eat = new ArrayList<>();
     Dialog dialog;
-    Spinner spinner;
+    AutoCompleteTextView editTextProduct;
 
     Button btnCreate;
     EditText editTextWeight;
@@ -57,21 +58,19 @@ public class EatList extends AppCompatActivity implements View.OnClickListener {
         dialog.setTitle("Заголовок диалога");
 
         dialog.setContentView(R.layout.eat_list_item_add);// ссылка на разметку
-        editTextWeight=(EditText)dialog.findViewById(R.id.calory_list_item_add_editTextWeight);
+        editTextWeight=(EditText)dialog.findViewById(R.id.calorie_list_item_add_editTextWeight);
         btnCreate=(Button)dialog.findViewById(R.id.eat_list_item_add_btnAdd);
         btnCreate.setOnClickListener(this);
-        spinner=(Spinner)dialog.findViewById(R.id.calory_list_item_add_spinnerChoice);
+        editTextProduct=(AutoCompleteTextView )dialog.findViewById(R.id.calorie_list_item_add_AutoComplereRextViewProduct);
         // адаптер
         ArrayAdapter<String> adapterSpinner = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
         adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spinner.setAdapter(adapterSpinner);
+        editTextProduct.setAdapter(adapterSpinner);
         // заголовок
-        spinner.setPrompt("Title");
-        // выделяем элемент
-        spinner.setSelection(2);
+
         // устанавливаем обработчик нажатия
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        editTextProduct.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view,
                                        int position, long id) {

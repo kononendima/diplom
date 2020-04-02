@@ -18,7 +18,7 @@ public class EatItemManager {
         ContentValues values=new ContentValues();
         values.put(eatItem.EAT, eatItem.getEat());
         values.put(eatItem.DATE,eatItem.getDate());
-        values.put(eatItem.CALORY,eatItem.getCalory());
+        values.put(eatItem.CALORIE,eatItem.getCalorie());
         return values;
     }
     public void addEatItem(EatItem eatItem) {

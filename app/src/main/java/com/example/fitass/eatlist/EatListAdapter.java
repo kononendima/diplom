@@ -32,7 +32,7 @@ public class EatListAdapter extends RecyclerView.Adapter<EatListAdapter.ViewHold
         EatItem eatItem = eatItems.get(position);
         holder.eat.setText(eatItem.getEat());
         holder.date.setText(eatItem.getDate());
-        holder.calory.setText(eatItem.getCalory());
+        holder.calorie.setText(eatItem.getCalorie());
     }
 
     @Override
@@ -42,12 +42,12 @@ public class EatListAdapter extends RecyclerView.Adapter<EatListAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        final TextView eat, date,calory;
+        final TextView eat, date,calorie;
         ViewHolder(View view){
             super(view);
             eat = (TextView) view.findViewById(R.id.eat_list_item_textViewType);
             date = (TextView) view.findViewById(R.id.eat_list_item_textViewDate);
-            calory = (TextView) view.findViewById(R.id.eat_list_item_textViewCalory);
+            calorie = (TextView) view.findViewById(R.id.eat_list_item_textViewcalorie);
         }
     }
 }

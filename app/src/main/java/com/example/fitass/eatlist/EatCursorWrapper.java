@@ -18,10 +18,9 @@ public class EatCursorWrapper extends CursorWrapper {
         String id = getString(getColumnIndex(EatItem.ID));
         String eat = getString(getColumnIndex(EatItem.EAT));
         String date = getString(getColumnIndex(EatItem.DATE));
-        String calory = getString(getColumnIndex(EatItem.CALORY));
-        EatItem eatItem = new EatItem(id, eat,date,calory);
+        String calorie = getString(getColumnIndex(EatItem.CALORIE));
+        EatItem eatItem = new EatItem(id, eat,date,calorie);
         return eatItem;
     }
-
 }
 

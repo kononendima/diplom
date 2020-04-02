@@ -24,7 +24,7 @@ public class UserManager  {
         values.put(User.LOGIN, user.getLogin());
         values.put(User.PASSWORD, user.getPassword());
         values.put(User.STEPS_ID, user.getStepsId());
-        values.put(User.CALORY_ID, user.getCaloryId());
+        values.put(User.CALORIE_ID, user.getcalorieId());
         values.put(User.HEIGHT, user.getHeight());
         values.put(User.WEIGHT, user.getWeight());
         values.put(User.LIFESTYLE, user.getLifestyle());

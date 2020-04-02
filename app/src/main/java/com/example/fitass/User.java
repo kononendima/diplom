@@ -5,7 +5,7 @@ public class User {
     public static final String LOGIN = "login";
     public static final String PASSWORD = "password";
     public static final String STEPS_ID = "steps_id";
-    public static final String CALORY_ID = "calory_id";
+    public static final String CALORIE_ID = "calorie_id";
     public static final String HEIGHT = "height";
     public static final String WEIGHT = "weight";
     public static final String LIFESTYLE = "lifestyle";
@@ -26,25 +26,25 @@ public class User {
         this.stepsId = stepsId;
     }
 
-    public String getCaloryId() {
-        return caloryId;
+    public String getcalorieId() {
+        return calorieId;
     }
 
-    public void setCaloryId(String caloryId) {
-        this.caloryId = caloryId;
+    public void setcalorieId(String calorieId) {
+        this.calorieId = calorieId;
     }
 
-    String caloryId;
+    String calorieId;
     String height;
     String weight;
     String lifestyle;
 
-    public User(String id, String login, String password, String stepsId, String caloryId, String height, String weight, String lifestyle) {
+    public User(String id, String login, String password, String stepsId, String calorieId, String height, String weight, String lifestyle) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.stepsId = stepsId;
-        this.caloryId = caloryId;
+        this.calorieId = calorieId;
         this.height = height;
         this.weight = weight;
         this.lifestyle = lifestyle;
@@ -58,12 +58,12 @@ public class User {
         this.id = id;
     }
 
-    public User(String login, String password, String stepsId, String caloryId, String height, String weight, String lifestyle) {
+    public User(String login, String password, String stepsId, String calorieId, String height, String weight, String lifestyle) {
 
         this.login = login;
         this.password = password;
         this.stepsId = stepsId;
-        this.caloryId = caloryId;
+        this.calorieId = calorieId;
         this.height = height;
         this.weight = weight;
         this.lifestyle = lifestyle;
