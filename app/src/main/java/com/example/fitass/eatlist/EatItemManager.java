@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.fitass.DataBaseHelper;
+import com.example.fitass.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,5 +50,41 @@ public class EatItemManager {
             cursor.close();
         }
         return eatList;//Возвращает список дел
+    }
+    public List<Product> getProductList(){
+
+        ArrayList<Product> productList=new ArrayList<>();
+        Cursor cursor =mDatabase.rawQuery("SELECT * from "+Product.TABLE_NAME,null);
+        if (cursor.moveToFirst()) {
+            do {
+                Product product=new Product();
+                product.setId(cursor.getString(0));
+                product.setTitle(cursor.getString(1));
+                product.setCalorieProduct(cursor.getString(2));
+                productList.add(product);
+
+
+            } while (cursor.moveToNext());
+
+        }
+        cursor.close();
+
+        return productList;
+    };
+    public  String getCalorieProduct(String productTitle){
+        Cursor cursor =mDatabase.rawQuery("SELECT *  FROM product_table WHERE (title =  '"+productTitle+"');",null);
+        String calorie = null;
+        if (cursor.moveToFirst()) {
+            do {
+                // Passing values
+                 calorie=cursor.getString(2);
+
+                // Do something Here with values
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        return calorie;
+
+
     }
 }
