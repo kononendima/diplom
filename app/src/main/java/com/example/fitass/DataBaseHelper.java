@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.fitass.eatlist.EatItem;
 
+import static java.sql.Types.VARCHAR;
+
 public class DataBaseHelper extends SQLiteOpenHelper {
     static final int VERSION=1;
     private static final String DATABASE_NAME="DataBase.db";
@@ -14,6 +16,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL("create table "+ Product.TABLE_NAME + " ("+
+                "_id integer primary key autoincrement, " +
+                Product.TITLE   + ", "+
+                Product.CALROIE_PRODUCT+")");
         db.execSQL("create table "+ EatItem.TABLE_NAME + " ("+
                 "_id integer primary key autoincrement, " +
                 EatItem.EAT+ ", "+
@@ -34,7 +40,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-       // db.execSQL("DROP TABLE IF EXISTS " + EatItem.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS " + EatItem.TABLE_NAME);
         onCreate(db);
     }
 }
