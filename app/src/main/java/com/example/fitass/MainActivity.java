@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             ContentValues values = new ContentValues();
             values.put(Product.TITLE, product.get(i).toString());
             values.put(Product.CALROIE_PRODUCT, cal.get(i).toString());
-            mDatabase.insert(Product.TABLE_NAME, null, values);
+           mDatabase.insert(Product.TABLE_NAME, null, values);
         }
 
 
