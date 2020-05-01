@@ -16,9 +16,12 @@ public class EatListAdapter extends RecyclerView.Adapter<EatListAdapter.ViewHold
     private LayoutInflater inflater;
     private List<EatItem> eatItems;
 
-    EatListAdapter(Context context, List<EatItem> eatItems) {
+    public EatListAdapter(Context context, List<EatItem> eatItems) {
         this.eatItems = eatItems;
         this.inflater = LayoutInflater.from(context);
+    }
+    public void updateList(List<EatItem> eatItems){
+        this.eatItems=eatItems;
     }
     @Override
     public EatListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

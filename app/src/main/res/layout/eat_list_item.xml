@@ -13,8 +13,9 @@
         <TextView
             android:id="@+id/eat_list_item_textViewType"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:autoText="false"
             android:text="TextView"
             android:textColor="@color/design_default_color_on_secondary"
             android:textSize="24sp" />

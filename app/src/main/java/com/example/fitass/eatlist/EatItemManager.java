@@ -26,7 +26,7 @@ public class EatItemManager {
         ContentValues values = getContentValues(eatItem);
         mDatabase.insert(eatItem.TABLE_NAME, null, values);
     }
-    EatItemManager(Context context) {
+    public EatItemManager(Context context) {
         mContext=context;
         mDatabase=new
                 DataBaseHelper(mContext).getWritableDatabase();

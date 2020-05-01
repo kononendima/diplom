@@ -6,32 +6,32 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.se.omapi.Session;
 import android.view.View;
 import android.widget.TextView;
 
-public class Pedometer implements SensorEventListener {
+public class Pedometer extends Object implements SensorEventListener,Runnable {
     TextView tv_steps;
-    SensorManager sensorManager;
-    Context mContext=;
+    SensorManager mSensorManager;
+    Context mContext;
     int a=0;
     View view;
 
 
 
-    public Pedometer(Context context) {
+    public Pedometer(Context context,SensorManager sensorManager) {
+        mSensorManager=sensorManager;
         mContext=context;
+        String a;
+
     }
-
-
-
-
 
     @Override
     public void onSensorChanged(SensorEvent event) {
 
-        sensorManager=(SensorManager)getSystemService(Context.SENSOR_SERVICE);
-        Sensor counterSensor=sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
-        sensorManager.registerListener(this,counterSensor,SensorManager.SENSOR_DELAY_FASTEST);
+
+        Sensor counterSensor=mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+        mSensorManager.registerListener(this,counterSensor,SensorManager.SENSOR_DELAY_FASTEST);
         if(event.values[0]==1.0) {
             a++;
 
@@ -41,6 +41,11 @@ public class Pedometer implements SensorEventListener {
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+    @Override
+    public void run() {
 
     }
 }

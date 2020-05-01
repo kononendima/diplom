@@ -37,6 +37,8 @@ dependencies {
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.0'
 //Штука для просмотра базы данных через хром (айпи телефона, потом:8080)
     implementation 'androidx.core:core:1.2.0'
+    implementation 'com.jakewharton:butterknife:10.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 
 
 }
