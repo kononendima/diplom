@@ -14,6 +14,7 @@ import com.example.fitass.User;
 import com.example.fitass.UserManager;
 
 public class SignUp extends AppCompatActivity implements View.OnClickListener {
+
     EditText editTextLogin,editTextPassword,editTextHeight,editTextWeight;
     Spinner spinnerLifestyle;
     Button buttonRegistration;
@@ -42,17 +43,19 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()){
             case R.id.activity_sign_up_buttonRegistration:
             {
-                User user=new User();
-                user.setLogin(editTextLogin.getText().toString());
-                user.setPassword(editTextPassword.getText().toString());
-                user.setHeight(editTextHeight.getText().toString());
-                user.setWeight(editTextWeight.getText().toString());
-                user.setLifestyle(spinnerLifestyle.getSelectedItem().toString());
-                UserManager userManager=new UserManager(this);
-                userManager.addUser(user);
-
-                break;
+               registrateUser();
+               break;
             }
         }
+    }
+    public void registrateUser(){
+        User user=new User();
+        user.setLogin(editTextLogin.getText().toString());
+        user.setPassword(editTextPassword.getText().toString());
+        user.setHeight(editTextHeight.getText().toString());
+        user.setWeight(editTextWeight.getText().toString());
+        user.setLifestyle(spinnerLifestyle.getSelectedItem().toString());
+        UserManager userManager=new UserManager(this);
+        userManager.addUser(user);
     }
 }

@@ -1,35 +1,24 @@
 package com.example.fitass.Fragments;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.fitass.Product;
 import com.example.fitass.R;
-import com.example.fitass.ServicePedometer;
 import com.example.fitass.eatlist.EatItem;
 import com.example.fitass.eatlist.EatItemManager;
-import com.example.fitass.eatlist.EatList;
 import com.example.fitass.eatlist.EatListAdapter;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 

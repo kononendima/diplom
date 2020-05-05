@@ -25,9 +25,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 EatItem.EAT+ ", "+
                 EatItem.DATE+","+
                 EatItem.CALORIE+")");
-        db.execSQL("create table Steps ("+
+        db.execSQL("create table activity_table ("+
                 "_id integer primary key autoincrement, " +
-                "id"+ ", "+
+                "user_id"+ ", "+
                 "steps"+","+
                 "date"+")");
 
