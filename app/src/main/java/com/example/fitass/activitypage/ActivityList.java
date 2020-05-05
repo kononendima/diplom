@@ -31,7 +31,7 @@ public class ActivityList extends AppCompatActivity {
         BottomNavigationView navigation1 = (BottomNavigationView) findViewById(R.id.activity_main_bottomNavigationBar);
 
         textViewResult =(TextView)findViewById(R.id.textViewResult);
-      //  startService(new Intent(this, ServicePedometer.class));
+     //  startService(new Intent(this, ServicePedometer.class));
      //   mm();
 
     }

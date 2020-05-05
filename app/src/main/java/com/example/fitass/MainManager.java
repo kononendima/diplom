@@ -6,12 +6,15 @@ import android.database.sqlite.SQLiteDatabase;
 public class MainManager {
     private Context mContext;
     private SQLiteDatabase mDatabase;
+
     MainManager(Context context) {
         mContext=context;
         mDatabase=new
                 DataBaseHelper(mContext).getWritableDatabase();
     }
-    public void add(){
+    public void checkRecord(){
+
+
 
     }
 }

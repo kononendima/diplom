@@ -2,6 +2,7 @@ package com.example.fitass;
 
 public class User {
     public static final String TABLE_NAME = "user_table";
+    public static final String ID = "_id";
     public static final String LOGIN = "login";
     public static final String PASSWORD = "password";
     public static final String STEPS_ID = "steps_id";
@@ -14,7 +15,10 @@ public class User {
     String login;
     String password;
     String stepsId;
-
+    String calorieId;
+    String height;
+    String weight;
+    String lifestyle;
     public User() {
     }
 
@@ -34,10 +38,6 @@ public class User {
         this.calorieId = calorieId;
     }
 
-    String calorieId;
-    String height;
-    String weight;
-    String lifestyle;
 
     public User(String id, String login, String password, String stepsId, String calorieId, String height, String weight, String lifestyle) {
         this.id = id;
@@ -84,8 +84,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 
     public String getHeight() {
         return height;

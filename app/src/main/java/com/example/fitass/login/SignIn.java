@@ -24,6 +24,7 @@ import java.util.Arrays;
 public class SignIn extends AppCompatActivity implements View.OnClickListener {
     EditText editTextLogin,editTextPassword;
     TextView textViewRegistration;
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,11 +57,12 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
                 String password=editTextPassword.getText().toString();
                 UserManager userManager=new UserManager(this);
 
-                User user= userManager.entrance(login,password);
+                user= userManager.entrance(login,password);
 
                 String b=user.getLogin();
                 String c=user.getPassword();
                 if(b.equals(login) && c.equals(password)){
+                    userManager.saveToMemoryUserData(login,password);
                     Intent intent=new Intent(this, MainActivity.class);
                     startActivity(intent);
                 }
