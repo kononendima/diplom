@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.fitass.Product;
+import com.example.fitass.eatlist.Product;
 import com.example.fitass.R;
 import com.example.fitass.eatlist.EatItem;
 import com.example.fitass.eatlist.EatItemManager;
@@ -53,7 +53,7 @@ public class EatFragment extends Fragment implements View.OnClickListener {
          adapterEat = new EatListAdapter(getActivity(), eatItems);
         // устанавливаем для списка адаптер
         recyclerView.setAdapter(adapterEat);
-        createDialog();
+
         return v;
     }
 
@@ -100,6 +100,7 @@ public class EatFragment extends Fragment implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.activity_eat_list_btnAdd:
+                createDialog();
                 dialog.show();
                 break;
             case R.id.eat_list_item_add_btnAdd:

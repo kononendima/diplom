@@ -24,6 +24,7 @@ public class UserManager  {
         this.mContext = mContext;
         mDatabase=new
                 DataBaseHelper(mContext).getWritableDatabase();
+
     }
 
     public static ContentValues getContentValues(User user) {
@@ -67,6 +68,11 @@ public class UserManager  {
         ed.commit();
 
 
+    }
+    public int getCurrentUserId(){
+        sPref = mContext.getSharedPreferences("Data",Context.MODE_PRIVATE);
+        int id = Integer.parseInt(sPref.getString("id","0"));
+        return id;
     }
 
 }

@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
            <service
-               android:name=".MyService"
+               android:name=".service.MyService"
                android:enabled="true"
                android:exported="true"></service>
         <activity android:name=".login.SignUp" />
@@ -24,7 +24,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activitypage.ActivityList" />
-        <activity android:name=".eatlist.EatList" />
         <activity android:name=".MainActivity" >
 
         </activity>

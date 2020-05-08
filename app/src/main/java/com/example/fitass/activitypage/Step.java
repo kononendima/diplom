@@ -1,17 +1,16 @@
-package com.example.fitass;
+package com.example.fitass.activitypage;
 
 public class Step {
     public static final String ID="_id";
     public static final String TABLE_NAME="activity_table";
     public static final String USER_ID="user_id";
+    public static final String STEPS="steps";
     public static final String DATE="date";
     String id;
     String userId;
     String steps;
     String date;
 
-    public Step() {
-    }
 
     public String getId() {
         return id;

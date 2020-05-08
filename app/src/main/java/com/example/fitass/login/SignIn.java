@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.fitass.DataBaseHelper;
 import com.example.fitass.MainActivity;
-import com.example.fitass.Product;
+import com.example.fitass.eatlist.Product;
 import com.example.fitass.R;
 import com.example.fitass.User;
 import com.example.fitass.UserManager;

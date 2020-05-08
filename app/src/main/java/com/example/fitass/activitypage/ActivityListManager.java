@@ -1,44 +1,92 @@
 package com.example.fitass.activitypage;
 
+import android.content.ContentValues;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.example.fitass.DataBaseHelper;
-import com.example.fitass.Step;
+import com.example.fitass.UserManager;
+import com.example.fitass.eatlist.Product;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ActivityListManager {
     Step step;
+    UserManager userManager;
     SharedPreferences sPref;
+    String todayDate = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
+    int userId;
     private Context mContext;
     private SQLiteDatabase mDatabase;
     public ActivityListManager(Context context) {
         mContext=context;
         mDatabase=new
                 DataBaseHelper(mContext).getWritableDatabase();
+        userManager=new UserManager(mContext);
     }
-    public void saveSteps(int steps){
-        int userId=getCurrentUserId();
-        String todayDate = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
-        String a=checkRecordOnThisDay(todayDate);
-  //      Cursor cursor =mDatabase.rawQuery("INSERT INTO activity_table(user_id,steps,date) VALUES ",null);
 
+    public void saveStepsToDb(int steps){
+         userId=userManager.getCurrentUserId();
+
+        String a=checkStepRecordOnThisDay();
+        if(a==null){
+            ContentValues values = new ContentValues();
+            values.put(step.USER_ID, userManager.getCurrentUserId());
+            values.put(step.STEPS, steps);
+            values.put(step.DATE, todayDate);
+            mDatabase.insert(step.TABLE_NAME,null,values);
+        }else {
+            mDatabase.execSQL("UPDATE "+step.TABLE_NAME+" SET \""+step.STEPS+"\" = "+ steps+" WHERE ((\""+step.DATE+"\"=\""+todayDate+"\") and (\""+step.USER_ID+"\" = "+userId+"))");
+        }
     }
-    private int getCurrentUserId(){
-        sPref = mContext.getSharedPreferences("Data",Context.MODE_PRIVATE);
-        int id = Integer.parseInt(sPref.getString("id","0"));
-        return id;
-    }
-    public String checkRecordOnThisDay(String todayDate){
-        step=new Step();
-        Cursor cursor=mDatabase.rawQuery("select * from activity_table where \"date\" = \""+todayDate+"\"",null);
+
+    public String checkStepRecordOnThisDay() {
+
+
+        Cursor cursor = mDatabase.rawQuery("select * from " + step.TABLE_NAME + " where \"" + step.DATE + "\" = \"" + todayDate + "\"", null);
         cursor.moveToFirst();
-        String id=cursor.getString(0);
-       return id;
+        if (cursor.getCount() != 0) {
+            String id = cursor.getString(0);
+            return id;
+        } else {
+            return null;
+        }
     }
+
+    public int getCurrentUserSteps(){
+            int userId = userManager.getCurrentUserId();
+            Cursor cursor = mDatabase.rawQuery("select * from " + step.TABLE_NAME + " where ((\"" + step.DATE + "\"=\"" + todayDate + "\") and (\"" + step.USER_ID + "\" = " + userId + "))", null);
+            cursor.moveToFirst();
+            if(cursor.getCount()!=0) {
+                int stepsCount = Integer.parseInt(cursor.getString(2));
+                return stepsCount;
+            }else {
+                return 0;
+            }
+    }
+    public ArrayList<Step> getStepList(){
+            int userId=userManager.getCurrentUserId();
+            ArrayList<Step> stepList=new ArrayList<>();
+            Cursor cursor =mDatabase.rawQuery("SELECT "+step.STEPS+","+step.DATE+" from "+step.TABLE_NAME+" where \""+step.USER_ID+"\" = "+ userId+"",null);
+            if (cursor.moveToFirst()) {
+                do {
+                    Step step=new Step();
+                    step.setSteps(cursor.getString(0));
+                    step.setDate(cursor.getString(1));
+                    stepList.add(step);
+
+
+                } while (cursor.moveToNext());
+
+            }
+            cursor.close();
+
+            return stepList;
+        }
+
+
 }

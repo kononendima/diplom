@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.fitass.DataBaseHelper;
-import com.example.fitass.Product;
 
 import java.util.ArrayList;
 import java.util.List;
