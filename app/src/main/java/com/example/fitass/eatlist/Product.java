@@ -1,4 +1,4 @@
-package com.example.fitass;
+package com.example.fitass.eatlist;
 
 public class Product {
     public static final String TABLE_NAME="product_table";

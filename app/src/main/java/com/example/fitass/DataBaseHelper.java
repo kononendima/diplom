@@ -5,8 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.fitass.eatlist.EatItem;
-
-import static java.sql.Types.VARCHAR;
+import com.example.fitass.eatlist.Product;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     static final int VERSION=1;
