@@ -20,14 +20,9 @@ public class UserManager  {
     SharedPreferences sPref;
     final String SAVED_TEXT = "saved_text";
     public UserManager(Context context) {
-
         this.mContext = context;
         mDatabase=new
                 DataBaseHelper(mContext).getWritableDatabase();
-
-    }
-    public UserManager(){
-
     }
 
     public static ContentValues getContentValues(User user) {
@@ -44,6 +39,7 @@ public class UserManager  {
         ContentValues values = getContentValues(user);
         mDatabase.insert(user.TABLE_NAME, null, values);
     }
+
     public User checkRegistration(String login, String password) {
         user = new User();
         Cursor cursor = mDatabase.rawQuery("SELECT * from " + User.TABLE_NAME + " WHERE (login = '" + login + "' and password = '" + password + "');", null);
@@ -62,6 +58,7 @@ public class UserManager  {
             return user;
         }
     }
+
     public void saveToMemoryUserData(String login, String password, String height){
         SharedPreferences sPref;
         sPref = mContext.getSharedPreferences("Data",MODE_PRIVATE);
@@ -72,13 +69,14 @@ public class UserManager  {
         ed.putString("height",height);
         ed.commit();
 
-
     }
+
     public int getCurrentUserIdFromMemory(){
         sPref = mContext.getSharedPreferences("Data",Context.MODE_PRIVATE);
         int id = Integer.parseInt(sPref.getString("id","0"));
         return id;
     }
+
     public int getCurrentUserHeightFromMemory(){
         sPref = mContext.getSharedPreferences("Data",Context.MODE_PRIVATE);
         int height = Integer.parseInt(sPref.getString("height","0"));

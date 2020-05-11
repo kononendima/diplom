@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.fitass.UserManager;
 import com.example.fitass.eatlist.Product;
 import com.example.fitass.R;
 import com.example.fitass.eatlist.EatItem;
@@ -59,7 +61,6 @@ public class EatFragment extends Fragment implements View.OnClickListener {
 
     public Dialog createDialog(){
 
-
         dialog = new Dialog(getActivity());
         dialog.setTitle("Заголовок диалога");
         dialog.setContentView(R.layout.eat_list_item_add);// ссылка на разметку
@@ -83,14 +84,16 @@ public class EatFragment extends Fragment implements View.OnClickListener {
         return titles;
     }
     public void calcCalorie(){
-       Date date=new Date();
+        UserManager userManager=new UserManager(getContext());
+        int currentUser=userManager.getCurrentUserIdFromMemory();
+        Date date=new Date();
         String stringDate=date.toString();
-        String stringeditTextProductTitle=editTextProductTitle.getText().toString();
+        String stringEditTextProductTitle=editTextProductTitle.getText().toString();
         EatItemManager eatItemManager=new EatItemManager(getActivity());
-        int calorie=Integer.parseInt( eatItemManager.getCalorieProduct(stringeditTextProductTitle));
-        int result=calorie*(Integer.parseInt(editTextWeight.getText().toString())/100);
+        int calorie=Integer.parseInt( eatItemManager.getCalorieProduct(stringEditTextProductTitle));
+        int result=(calorie*(Integer.parseInt(editTextWeight.getText().toString())))/100;
 
-        eatItemManager.addEatItem(new EatItem(stringeditTextProductTitle,stringDate,"Калорий "+result));
+        eatItemManager.addEatItem(new EatItem(stringEditTextProductTitle,stringDate,"Калорий "+result,String.valueOf(currentUser)));
     }
 
 

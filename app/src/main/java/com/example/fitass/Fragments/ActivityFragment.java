@@ -89,7 +89,5 @@ public class ActivityFragment extends Fragment {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-
     }
-
 }

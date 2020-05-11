@@ -25,14 +25,12 @@ import com.example.fitass.R;
 import com.example.fitass.activitypage.ActivityListManager;
 import com.example.fitass.activitypage.Step;
 
-import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Timer;
-import java.util.TimerTask;
+
 
 import static java.lang.String.valueOf;
 
