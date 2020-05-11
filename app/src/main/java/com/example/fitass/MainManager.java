@@ -13,8 +13,5 @@ public class MainManager {
                 DataBaseHelper(mContext).getWritableDatabase();
     }
     public void checkRecord(){
-
-
-
     }
 }

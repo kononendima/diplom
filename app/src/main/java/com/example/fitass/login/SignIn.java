@@ -21,14 +21,22 @@ import com.example.fitass.UserManager;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class SignIn extends AppCompatActivity implements View.OnClickListener {
     EditText editTextLogin,editTextPassword;
     TextView textViewRegistration;
+    String inputLogin,inputPassword;
     User user;
+    UserManager userManager;
+    @BindView(R.id.activity_sign_in_textViewError)
+    TextView textViewError;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        ButterKnife.bind(this);
         editTextLogin=(EditText)findViewById(R.id.activity_sign_id_EditTextLogin);
         editTextPassword=(EditText)findViewById(R.id.activity_sign_id_EditTextPassword);
         Button btn=(Button)findViewById(R.id.activity_sign_id_btnEntrance);
@@ -46,30 +54,36 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
             values.put(Product.CALROIE_PRODUCT, cal.get(i).toString());
             mDatabase.insert(Product.TABLE_NAME, null, values);
         }
-//this.deleteDatabase("DataBase.db"); //Удаление бд
+        //this.deleteDatabase("DataBase.db"); //Удаление бд
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.activity_sign_id_btnEntrance:
-                String login=editTextLogin.getText().toString();
-                String password=editTextPassword.getText().toString();
-                UserManager userManager=new UserManager(this);
+                 inputLogin=editTextLogin.getText().toString();
+                 inputPassword=editTextPassword.getText().toString();
+                 userManager=new UserManager(this);
 
-                user= userManager.entrance(login,password);
-
-                String b=user.getLogin();
-                String c=user.getPassword();
-                if(b.equals(login) && c.equals(password)){
-                    userManager.saveToMemoryUserData(login,password);
-                    Intent intent=new Intent(this, MainActivity.class);
-                    startActivity(intent);
-                }
+                user= userManager.checkRegistration(inputLogin,inputPassword);
+                entrance(user);
                 break;
             case R.id.activity_sign_in_textViewRegistration:
                 Intent intent=new Intent(this, SignUp.class);
                 startActivity(intent);
+        }
+    }
+    public void entrance(User user){
+        if(user==null){
+            textViewError.setText("Неверные данные");
+        }else {
+            String b = user.getLogin();
+            String c = user.getPassword();
+            if (b.equals(inputLogin) && c.equals(inputPassword)) {
+                userManager.saveToMemoryUserData(inputLogin, inputPassword, user.getHeight());
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }
         }
     }
 }

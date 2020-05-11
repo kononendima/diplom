@@ -34,8 +34,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "_id integer primary key autoincrement, " +
                 User.LOGIN+ ", "+
                 User.PASSWORD+","+
-                "steps_id integer  "+","+
-                "calorie_id integer "+","+
                 User.HEIGHT+","+
                 User.WEIGHT+","+
                 User.LIFESTYLE+")");

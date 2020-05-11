@@ -77,8 +77,6 @@ public class MyService extends Service {
                 .setContentIntent(pendingIntent)
                 .build();
         startForeground(1, notification);
-        //do heavy work on a background thread
-        //stopSelf();
         return START_STICKY;
     }
 
@@ -111,26 +109,13 @@ public class MyService extends Service {
         }
     }
 
-
-    private void getAccelerometer(SensorEvent event) {
-        float[] values = event.values;
-
-        if(values[0]==1.0){
-            steps++;
-        }
-
-    }
-
-
     public void recallingSync() {
         currentDate= new Date();
-        timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
-        final String timeText = timeFormat.format(currentDate);
-
          Runnable r = new Runnable() {
             public void run() {
-
-               if(timeText=="00:00:00")
+                timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+                final String currentTimeString = timeFormat.format(currentDate);
+               if(currentTimeString=="00:00:00" || currentTimeString=="00:00:01" || currentTimeString=="00:00:02" || currentTimeString=="00:00:03" || currentTimeString=="00:00:04" || currentTimeString=="00:00:05" )
                    steps=0;
                 activityListManager = new ActivityListManager(getApplicationContext());
                 activityListManager.saveStepsToDb(steps);
@@ -145,19 +130,20 @@ public class MyService extends Service {
             r.run();
         }else{
             handler.removeCallbacksAndMessages(r);
-
         }
-
-
-
     }
     public class Pedometer2 extends Object implements SensorEventListener {
 
         @Override
         public void onSensorChanged(SensorEvent event) {
-
             if (event.sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
                 getAccelerometer(event);
+            }
+        }
+        private void getAccelerometer(SensorEvent event) {
+            float[] values = event.values;
+            if(values[0]==1.0){
+                steps++;
             }
         }
 
@@ -165,7 +151,5 @@ public class MyService extends Service {
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
         }
-
-
     }
 }

@@ -75,10 +75,10 @@ public class EatItemManager {
         String calorie = null;
         if (cursor.moveToFirst()) {
             do {
-                // Passing values
+
                  calorie=cursor.getString(2);
 
-                // Do something Here with values
+
             } while (cursor.moveToNext());
         }
         cursor.close();

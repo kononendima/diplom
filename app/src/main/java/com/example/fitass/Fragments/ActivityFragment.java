@@ -14,17 +14,13 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import com.example.fitass.activitypage.ActivityListAdapter;
 import com.example.fitass.activitypage.ActivityListManager;
 import com.example.fitass.activitypage.Step;
 import com.example.fitass.service.MyService;
 import com.example.fitass.R;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Locale;
+
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,9 +38,7 @@ public class ActivityFragment extends Fragment {
     public ArrayList<Step> stepList;
     ActivityListManager activityListManager;
     ActivityListAdapter activityListAdapter;
-
     boolean flag;
-    Handler  handler = new Handler();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -83,34 +77,7 @@ public class ActivityFragment extends Fragment {
         serviceIntent.putExtra("inputExtra", "Foreground Service Example in Android");
         ContextCompat.startForegroundService(getActivity(), serviceIntent);
     }
-    public void updateRecycler() {
 
-
-        Runnable r = new Runnable() {
-            public void run() {
-
-
-                activityListManager = new ActivityListManager(getActivity());
-                stepList=activityListManager.getStepList();
-                activityListAdapter.updateList(stepList);
-                activityListAdapter.notifyDataSetChanged();
-                if (flag) {
-                    handler.postDelayed(this, 5000);
-                }else {
-                    handler.removeCallbacksAndMessages(this);
-                }
-            }
-        };
-        if(flag==true) {
-            r.run();
-        }else{
-            handler.removeCallbacksAndMessages(r);
-
-        }
-
-
-
-    }
     public void refreshRecycler(final SwipeRefreshLayout swipeRefreshLayout){
        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
