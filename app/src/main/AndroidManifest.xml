@@ -15,16 +15,20 @@
                android:name=".service.MyService"
                android:enabled="true"
                android:exported="true"></service>
-        <activity android:name=".login.SignUp" />
-        <activity android:name=".login.SignIn">
+        <activity android:name=".login.SignUp"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".login.SignIn"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activitypage.ActivityList" />
-        <activity android:name=".MainActivity" >
+        <activity android:name=".activitypage.ActivityList"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
 
         </activity>
     </application>

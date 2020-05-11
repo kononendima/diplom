@@ -30,12 +30,12 @@ public class ActivityListManager {
     }
 
     public void saveStepsToDb(int steps){
-         userId=userManager.getCurrentUserId();
+         userId=userManager.getCurrentUserIdFromMemory();
 
         String a=checkStepRecordOnThisDay();
         if(a==null){
             ContentValues values = new ContentValues();
-            values.put(step.USER_ID, userManager.getCurrentUserId());
+            values.put(step.USER_ID, userManager.getCurrentUserIdFromMemory());
             values.put(step.STEPS, steps);
             values.put(step.DATE, todayDate);
             mDatabase.insert(step.TABLE_NAME,null,values);
@@ -47,7 +47,7 @@ public class ActivityListManager {
     public String checkStepRecordOnThisDay() {
 
 
-        Cursor cursor = mDatabase.rawQuery("select * from " + step.TABLE_NAME + " where \"" + step.DATE + "\" = \"" + todayDate + "\"", null);
+        Cursor cursor = mDatabase.rawQuery("select * from " + step.TABLE_NAME + " where ((\""+step.DATE+"\"=\""+todayDate+"\") and (\""+step.USER_ID+"\" = "+userId+"))", null);
         cursor.moveToFirst();
         if (cursor.getCount() != 0) {
             String id = cursor.getString(0);
@@ -58,7 +58,7 @@ public class ActivityListManager {
     }
 
     public int getCurrentUserSteps(){
-            int userId = userManager.getCurrentUserId();
+            int userId = userManager.getCurrentUserIdFromMemory();
             Cursor cursor = mDatabase.rawQuery("select * from " + step.TABLE_NAME + " where ((\"" + step.DATE + "\"=\"" + todayDate + "\") and (\"" + step.USER_ID + "\" = " + userId + "))", null);
             cursor.moveToFirst();
             if(cursor.getCount()!=0) {
@@ -69,7 +69,7 @@ public class ActivityListManager {
             }
     }
     public ArrayList<Step> getStepList(){
-            int userId=userManager.getCurrentUserId();
+            int userId=userManager.getCurrentUserIdFromMemory();
             ArrayList<Step> stepList=new ArrayList<>();
             Cursor cursor =mDatabase.rawQuery("SELECT "+step.STEPS+","+step.DATE+" from "+step.TABLE_NAME+" where \""+step.USER_ID+"\" = "+ userId+"",null);
             if (cursor.moveToFirst()) {

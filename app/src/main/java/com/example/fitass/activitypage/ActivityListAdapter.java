@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fitass.R;
+import com.example.fitass.UserManager;
 import com.example.fitass.eatlist.EatItem;
 import com.example.fitass.eatlist.EatListAdapter;
 
@@ -18,11 +19,18 @@ import java.util.List;
 public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapter.ViewHolder> {
     private LayoutInflater inflater;
     private List<Step> stepList;
+    Context mContext;
+    int userHeight;
 
     public ActivityListAdapter(Context context, List<Step> stepList) {
         this.stepList = stepList;
+
         this.inflater = LayoutInflater.from(context);
+        UserManager userManager=new UserManager(context);
+        userHeight=userManager.getCurrentUserHeightFromMemory();
+
     }
+
     public void updateList(List<Step> stepList){
         this.stepList=stepList;
 
@@ -36,10 +44,18 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Step stepItem = stepList.get(position);
-        holder.steps.setText(stepItem.getSteps());
-        holder.date.setText(stepItem.getDate());
+        Step stepInDay = stepList.get(position);
+        holder.steps.setText(stepInDay.getSteps());
+        holder.date.setText(stepInDay.getDate());
+        if(calcDistance(stepInDay).length()>3)
+            holder.distance.setText(calcDistance(stepInDay).substring(0,4).concat(" км"));
+        else
+            holder.distance.setText(calcDistance(stepInDay).substring(0,3).concat(" км"));
 
+    }
+    public String calcDistance(Step stepInDay){
+        String distance =String.valueOf(Double.parseDouble(String.valueOf((((userHeight/ 4 + 35 )) * Integer.parseInt(stepInDay.getSteps()))))/100000);
+        return distance;
     }
 
 
@@ -51,11 +67,13 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        final TextView steps, date;
+        final TextView steps, date,distance ;
         ViewHolder(View view){
             super(view);
+
             steps = (TextView) view.findViewById(R.id.activity_list_item_textViewSteps);
             date = (TextView) view.findViewById(R.id.activity_list_item_textViewDate);
+            distance=(TextView)view.findViewById(R.id.activity_list_item_textViewDistance);
 
         }
     }
