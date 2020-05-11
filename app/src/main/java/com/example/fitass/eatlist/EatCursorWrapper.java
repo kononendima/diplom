@@ -13,13 +13,14 @@ public class EatCursorWrapper extends CursorWrapper {
     public EatCursorWrapper(Cursor cursor) {
         super(cursor);
     }
-//Прослойка между курсором и бд
+
     public EatItem getEat() {
         String id = getString(getColumnIndex(EatItem.ID));
         String eat = getString(getColumnIndex(EatItem.EAT));
         String date = getString(getColumnIndex(EatItem.DATE));
+        String userId = getString(getColumnIndex(EatItem.USER_ID));
         String calorie = getString(getColumnIndex(EatItem.CALORIE));
-        EatItem eatItem = new EatItem(id, eat,date,calorie);
+        EatItem eatItem = new EatItem(id, eat,date,calorie,userId);
         return eatItem;
     }
 }

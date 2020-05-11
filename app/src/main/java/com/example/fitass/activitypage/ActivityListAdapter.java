@@ -5,14 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.fitass.R;
 import com.example.fitass.UserManager;
-import com.example.fitass.eatlist.EatItem;
-import com.example.fitass.eatlist.EatListAdapter;
 
 import java.util.List;
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.fitass.Fragments.EatFragment;
 import com.example.fitass.eatlist.EatItem;
 import com.example.fitass.eatlist.Product;
 
@@ -22,6 +23,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("create table "+ EatItem.TABLE_NAME + " ("+
                 "_id integer primary key autoincrement, " +
                 EatItem.EAT+ ", "+
+                EatItem.USER_ID+ ", "+
                 EatItem.DATE+","+
                 EatItem.CALORIE+")");
         db.execSQL("create table activity_table ("+

@@ -8,25 +8,36 @@ public class EatItem {
     public static final String DATE ="date";
     public static final String CALORIE = "calorie";
     public static final String EAT = "eat";
+    public static final String USER_ID="user_id";
     public static final String ID = "_id";
     private String date;
     private String calorie;
     private String eat;
     private String id;
-    public EatItem(String eat, String date, String calorie) {
+    private String userId;
+
+
+
+    public EatItem(String eat, String date, String calorie,String userId) {
         this.date = date;
         this.calorie = calorie;
         this.eat = eat;
+        this.userId=userId;
     }
-    public EatItem(String id, String eat, String date, String calorie) {
+    public EatItem(String id, String eat, String date, String calorie,String userId) {
         this.date = date;
         this.calorie = calorie;
         this.eat = eat;
         this.id=id;
+        this.userId=userId;
+    }
+    public String getUserId() {
+        return userId;
     }
 
-
-
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
     public String getDate() {
         return date;
     }
@@ -34,8 +45,6 @@ public class EatItem {
     public void setDate(String date) {
         this.date = date;
     }
-
-
 
     public String getCalorie() {
         return calorie;

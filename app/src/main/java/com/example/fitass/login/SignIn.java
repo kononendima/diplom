@@ -1,9 +1,13 @@
 package com.example.fitass.login;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -37,6 +41,10 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         ButterKnife.bind(this);
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION)== PackageManager.PERMISSION_DENIED){
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACTIVITY_RECOGNITION},
+                    1);
+        }
         editTextLogin=(EditText)findViewById(R.id.activity_sign_id_EditTextLogin);
         editTextPassword=(EditText)findViewById(R.id.activity_sign_id_EditTextPassword);
         Button btn=(Button)findViewById(R.id.activity_sign_id_btnEntrance);

@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.fitass.DataBaseHelper;
+import com.example.fitass.User;
+import com.example.fitass.UserManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +15,15 @@ import java.util.List;
 public class EatItemManager {
     private Context mContext;
     private SQLiteDatabase mDatabase;
-
-    public static ContentValues getContentValues(EatItem eatItem){
+    private UserManager userManager;
+    private int currentUser;
+    public ContentValues getContentValues(EatItem eatItem){
+        int currentUser=userManager.getCurrentUserIdFromMemory();
         ContentValues values=new ContentValues();
         values.put(eatItem.EAT, eatItem.getEat());
         values.put(eatItem.DATE,eatItem.getDate());
         values.put(eatItem.CALORIE,eatItem.getCalorie());
+        values.put(eatItem.USER_ID,currentUser);
         return values;
     }
     public void addEatItem(EatItem eatItem) {
@@ -29,12 +34,13 @@ public class EatItemManager {
         mContext=context;
         mDatabase=new
                 DataBaseHelper(mContext).getWritableDatabase();
+        userManager=new UserManager(mContext);
     }
-    private EatCursorWrapper getEatItemsCursor(String whereClause,//Имеем объект(курсор) до первой строки
+    private EatCursorWrapper getEatItemsCursor(String whereClause,
                                               String[] wereArgs){
         Cursor cursor=mDatabase.query(EatItem.TABLE_NAME,
-                null,whereClause,wereArgs,null,null,null);
-        return new EatCursorWrapper(cursor);//Получаем объект(курсор) до первой строки
+                null, EatItem.USER_ID+" = "+userManager.getCurrentUserIdFromMemory(),wereArgs,null,null,null);
+        return new EatCursorWrapper(cursor);
     }
     public List<EatItem> getEatItemsList() {
         List<EatItem> eatList = new ArrayList<>();
@@ -48,12 +54,12 @@ public class EatItemManager {
         } finally {
             cursor.close();
         }
-        return eatList;//Возвращает список дел
+        return eatList;
     }
     public List<Product> getProductList(){
-
+        currentUser=userManager.getCurrentUserIdFromMemory();
         ArrayList<Product> productList=new ArrayList<>();
-        Cursor cursor =mDatabase.rawQuery("SELECT * from "+Product.TABLE_NAME,null);
+        Cursor cursor =mDatabase.rawQuery("SELECT * from "+Product.TABLE_NAME+"",null);
         if (cursor.moveToFirst()) {
             do {
                 Product product=new Product();

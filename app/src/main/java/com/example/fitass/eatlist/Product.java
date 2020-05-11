@@ -4,6 +4,7 @@ public class Product {
     public static final String TABLE_NAME="product_table";
     public static final String TITLE="title";
     public static final String CALROIE_PRODUCT="calorie_product";
+
     private String id;
     private String title;
     private String calorieProduct;
