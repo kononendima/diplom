@@ -88,7 +88,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
             String b = user.getLogin();
             String c = user.getPassword();
             if (b.equals(inputLogin) && c.equals(inputPassword)) {
-                userManager.saveToMemoryUserData(inputLogin, inputPassword, user.getHeight());
+                userManager.saveToMemoryUserData(inputLogin, inputPassword, user.getHeight(),user.getWeight());
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }

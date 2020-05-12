@@ -16,7 +16,7 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
     private LayoutInflater inflater;
     private List<Step> stepList;
     Context mContext;
-    int userHeight;
+    int userHeight,userWeight;
 
     public ActivityListAdapter(Context context, List<Step> stepList) {
         this.stepList = stepList;
@@ -24,6 +24,7 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
         this.inflater = LayoutInflater.from(context);
         UserManager userManager=new UserManager(context);
         userHeight=userManager.getCurrentUserHeightFromMemory();
+        userWeight=userManager.getCurrentUserWeight();
 
     }
 
@@ -47,7 +48,10 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
             holder.distance.setText(calcDistance(stepInDay).substring(0,4).concat(" км"));
         else
             holder.distance.setText(calcDistance(stepInDay).substring(0,3).concat(" км"));
-
+        if(calcDistance(stepInDay).length()>3)
+            holder.calorie.setText(String.valueOf(Double.parseDouble(calcDistance(stepInDay))*0.5*userWeight).substring(0,4));
+        else
+            holder.calorie.setText(String.valueOf(Double.parseDouble(calcDistance(stepInDay))*0.5*userWeight).substring(0,3));
     }
     public String calcDistance(Step stepInDay){
         String distance =String.valueOf(Double.parseDouble(String.valueOf((((userHeight/ 4 + 35 )) * Integer.parseInt(stepInDay.getSteps()))))/100000);
@@ -63,14 +67,14 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        final TextView steps, date,distance ;
+        final TextView steps, date,distance,calorie ;
         ViewHolder(View view){
             super(view);
 
             steps = (TextView) view.findViewById(R.id.activity_list_item_textViewSteps);
             date = (TextView) view.findViewById(R.id.activity_list_item_textViewDate);
             distance=(TextView)view.findViewById(R.id.activity_list_item_textViewDistance);
-
+            calorie=(TextView)view.findViewById(R.id.activity_list_item_textViewCalorie);
         }
     }
 }
