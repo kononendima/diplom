@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +39,7 @@ public class EatFragment extends Fragment implements View.OnClickListener {
     EatListAdapter adapterEat;
     Button btnCreate;
     EditText editTextWeight;
+    TextView editTextError;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,6 +69,7 @@ public class EatFragment extends Fragment implements View.OnClickListener {
         dialog.setContentView(R.layout.eat_list_item_add);// ссылка на разметку
         editTextProductTitle=(AutoCompleteTextView)dialog.findViewById(R.id.calorie_list_item_add_AutoComplereRextViewProduct);
         editTextWeight=(EditText)dialog.findViewById(R.id.calorie_list_item_add_editTextWeight);
+        editTextError=(TextView)dialog.findViewById(R.id.calorie_list_item_add_textViewError);
         btnCreate=(Button)dialog.findViewById(R.id.eat_list_item_add_btnAdd);
         btnCreate.setOnClickListener(this);
         // адаптер
@@ -84,16 +88,20 @@ public class EatFragment extends Fragment implements View.OnClickListener {
         return titles;
     }
     public void calcCalorie(){
-        UserManager userManager=new UserManager(getContext());
-        int currentUser=userManager.getCurrentUserIdFromMemory();
-        Date date=new Date();
-        String stringDate=date.toString();
-        String stringEditTextProductTitle=editTextProductTitle.getText().toString();
-        EatItemManager eatItemManager=new EatItemManager(getActivity());
-        int calorie=Integer.parseInt( eatItemManager.getCalorieProduct(stringEditTextProductTitle));
-        int result=(calorie*(Integer.parseInt(editTextWeight.getText().toString())))/100;
-
-        eatItemManager.addEatItem(new EatItem(stringEditTextProductTitle,stringDate,"Калорий "+result,String.valueOf(currentUser)));
+        if(editTextWeight.length()==0 || editTextProductTitle.length()==0) {
+            editTextError.setText("Данные неверные");
+        }else{
+            UserManager userManager = new UserManager(getContext());
+            int currentUser = userManager.getCurrentUserIdFromMemory();
+            Date date = new Date();
+            String stringDate = date.toString();
+            String stringEditTextProductTitle = editTextProductTitle.getText().toString();
+            EatItemManager eatItemManager = new EatItemManager(getActivity());
+            int calorie = Integer.parseInt(eatItemManager.getCalorieProduct(stringEditTextProductTitle));
+            int result = (calorie * (Integer.parseInt(editTextWeight.getText().toString()))) / 100;
+            eatItemManager.addEatItem(new EatItem(stringEditTextProductTitle, stringDate, "Калорий " + result, String.valueOf(currentUser)));
+            dialog.dismiss();
+        }
     }
 
 
@@ -108,7 +116,6 @@ public class EatFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.eat_list_item_add_btnAdd:
                 calcCalorie();
-                dialog.dismiss();
                 eatItems=eatItemManager.getEatItemsList();
                 adapterEat.updateList(eatItems);
                 adapterEat.notifyDataSetChanged();

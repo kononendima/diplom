@@ -52,6 +52,7 @@ public class UserManager  {
                     user.setLogin(cursor.getString(1));
                     user.setPassword(cursor.getString(2));
                     user.setHeight(cursor.getString(3));
+                    user.setWeight(cursor.getString(4));
                 } while (cursor.moveToNext());
             }
             cursor.close();
@@ -59,7 +60,7 @@ public class UserManager  {
         }
     }
 
-    public void saveToMemoryUserData(String login, String password, String height){
+    public void saveToMemoryUserData(String login, String password, String height, String weight){
         SharedPreferences sPref;
         sPref = mContext.getSharedPreferences("Data",MODE_PRIVATE);
         SharedPreferences.Editor ed = sPref.edit();
@@ -67,6 +68,7 @@ public class UserManager  {
         ed.putString("login", login);
         ed.putString("password", password);
         ed.putString("height",height);
+        ed.putString("weight",weight);
         ed.commit();
 
     }
@@ -75,6 +77,11 @@ public class UserManager  {
         sPref = mContext.getSharedPreferences("Data",Context.MODE_PRIVATE);
         int id = Integer.parseInt(sPref.getString("id","0"));
         return id;
+    }
+    public int getCurrentUserWeight(){
+        sPref = mContext.getSharedPreferences("Data",Context.MODE_PRIVATE);
+        int weight = Integer.parseInt(sPref.getString("weight","0"));
+        return weight;
     }
 
     public int getCurrentUserHeightFromMemory(){
