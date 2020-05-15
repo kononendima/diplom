@@ -4,13 +4,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 public class MainManager {
-    private Context mContext;
-    private SQLiteDatabase mDatabase;
 
     MainManager(Context context) {
-        mContext=context;
-        mDatabase=new
-                DataBaseHelper(mContext).getWritableDatabase();
+        SQLiteDatabase mDatabase = new
+                DataBaseHelper(context).getWritableDatabase();
     }
     public void checkRecord(){
     }

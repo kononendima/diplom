@@ -13,10 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EatItemManager {
-    private Context mContext;
     private SQLiteDatabase mDatabase;
     private UserManager userManager;
-    private int currentUser;
+
     public ContentValues getContentValues(EatItem eatItem){
         int currentUser=userManager.getCurrentUserIdFromMemory();
         ContentValues values=new ContentValues();
@@ -24,6 +23,7 @@ public class EatItemManager {
         values.put(eatItem.DATE,eatItem.getDate());
         values.put(eatItem.CALORIE,eatItem.getCalorie());
         values.put(eatItem.USER_ID,currentUser);
+        values.put(eatItem.WEIGHT,eatItem.getWeight());
         return values;
     }
     public void addEatItem(EatItem eatItem) {
@@ -31,10 +31,9 @@ public class EatItemManager {
         mDatabase.insert(eatItem.TABLE_NAME, null, values);
     }
     public EatItemManager(Context context) {
-        mContext=context;
         mDatabase=new
-                DataBaseHelper(mContext).getWritableDatabase();
-        userManager=new UserManager(mContext);
+                DataBaseHelper(context).getWritableDatabase();
+        userManager=new UserManager(context);
     }
     private EatCursorWrapper getEatItemsCursor(String whereClause,
                                               String[] wereArgs){
@@ -57,7 +56,7 @@ public class EatItemManager {
         return eatList;
     }
     public List<Product> getProductList(){
-        currentUser=userManager.getCurrentUserIdFromMemory();
+        int currentUser = userManager.getCurrentUserIdFromMemory();
         ArrayList<Product> productList=new ArrayList<>();
         Cursor cursor =mDatabase.rawQuery("SELECT * from "+Product.TABLE_NAME+"",null);
         if (cursor.moveToFirst()) {

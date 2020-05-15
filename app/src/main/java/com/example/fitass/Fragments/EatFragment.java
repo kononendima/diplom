@@ -20,6 +20,8 @@ import com.example.fitass.R;
 import com.example.fitass.eatlist.EatItem;
 import com.example.fitass.eatlist.EatItemManager;
 import com.example.fitass.eatlist.EatListAdapter;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -94,12 +96,12 @@ public class EatFragment extends Fragment implements View.OnClickListener {
             UserManager userManager = new UserManager(getContext());
             int currentUser = userManager.getCurrentUserIdFromMemory();
             Date date = new Date();
-            String stringDate = date.toString();
+            String todayDate = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
             String stringEditTextProductTitle = editTextProductTitle.getText().toString();
             EatItemManager eatItemManager = new EatItemManager(getActivity());
             int calorie = Integer.parseInt(eatItemManager.getCalorieProduct(stringEditTextProductTitle));
             int result = (calorie * (Integer.parseInt(editTextWeight.getText().toString()))) / 100;
-            eatItemManager.addEatItem(new EatItem(stringEditTextProductTitle, stringDate, "Калорий " + result, String.valueOf(currentUser)));
+            eatItemManager.addEatItem(new EatItem(stringEditTextProductTitle, todayDate, "Калорий " + result, String.valueOf(currentUser),editTextWeight.getText().toString()));
             dialog.dismiss();
         }
     }

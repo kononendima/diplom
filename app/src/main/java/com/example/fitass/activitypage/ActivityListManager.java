@@ -17,16 +17,13 @@ import java.util.List;
 public class ActivityListManager {
     Step step;
     UserManager userManager;
-    SharedPreferences sPref;
     String todayDate = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
     int userId;
-    private Context mContext;
     private SQLiteDatabase mDatabase;
     public ActivityListManager(Context context) {
-        mContext=context;
         mDatabase=new
-                DataBaseHelper(mContext).getWritableDatabase();
-        userManager=new UserManager(mContext);
+                DataBaseHelper(context).getWritableDatabase();
+        userManager=new UserManager(context);
     }
 
     public void saveStepsToDb(int steps){

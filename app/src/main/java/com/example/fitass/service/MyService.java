@@ -130,7 +130,7 @@ public class MyService extends Service {
             handler.removeCallbacksAndMessages(r);
         }
     }
-    public class Pedometer2 extends Object implements SensorEventListener {
+    public class Pedometer2 implements SensorEventListener {
 
         @Override
         public void onSensorChanged(SensorEvent event) {

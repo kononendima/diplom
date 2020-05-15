@@ -10,26 +10,41 @@ public class EatItem {
     public static final String EAT = "eat";
     public static final String USER_ID="user_id";
     public static final String ID = "_id";
+    public static final String WEIGHT = "weight";
     private String date;
     private String calorie;
     private String eat;
-    private String id;
     private String userId;
 
-
-
-    public EatItem(String eat, String date, String calorie,String userId) {
-        this.date = date;
+    public void setCalorie(String calorie) {
         this.calorie = calorie;
-        this.eat = eat;
-        this.userId=userId;
     }
-    public EatItem(String id, String eat, String date, String calorie,String userId) {
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    private String weight;
+
+
+
+    public EatItem(String eat, String date, String calorie,String userId,String weight) {
         this.date = date;
         this.calorie = calorie;
         this.eat = eat;
-        this.id=id;
         this.userId=userId;
+        this.weight=weight;
+    }
+    public EatItem(String id, String eat, String date, String calorie,String userId,String weight) {
+        this.date = date;
+        this.calorie = calorie;
+        this.eat = eat;
+        this.userId=userId;
+        this.weight=weight;
     }
     public String getUserId() {
         return userId;
