@@ -1,4 +1,4 @@
-package waterpage;
+package com.example.fitass.waterpage;
 
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;

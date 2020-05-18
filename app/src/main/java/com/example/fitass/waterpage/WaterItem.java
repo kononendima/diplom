@@ -1,4 +1,4 @@
-package waterpage;
+package com.example.fitass.waterpage;
 
 public class WaterItem {
     public static final String ID="_id";
