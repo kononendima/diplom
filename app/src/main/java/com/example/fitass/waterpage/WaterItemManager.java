@@ -1,4 +1,4 @@
-package waterpage;
+package com.example.fitass.waterpage;
 
 import android.content.ContentValues;
 import android.content.Context;
