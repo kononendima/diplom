@@ -98,7 +98,7 @@ public class EatFragment extends Fragment implements View.OnClickListener {
             UserManager userManager = new UserManager(getContext());
             int currentUser = userManager.getCurrentUserIdFromMemory();
 
-            String todayDate = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
+            String todayDate = new SimpleDateFormat("dd MMMM yyyy").format(new Date());
             String stringEditTextProductTitle = editTextProductTitle.getText().toString();
             EatItemManager eatItemManager = new EatItemManager(getActivity());
             int calorie = Integer.parseInt(eatItemManager.getCalorieProduct(stringEditTextProductTitle));

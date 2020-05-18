@@ -15,7 +15,7 @@ import java.util.List;
 public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapter.ViewHolder> {
     private LayoutInflater inflater;
     private List<Step> stepList;
-    Context mContext;
+
     int userHeight,userWeight;
 
     public ActivityListAdapter(Context context, List<Step> stepList) {

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="300dp"
+    android:layout_height="match_parent">
+
+    <AutoCompleteTextView
+        android:id="@+id/water_list_item_add_AutoComplereRextViewProduct"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:dropDownHeight="300dp"
+        android:hint="Вид жидкости" />
+
+    <EditText
+        android:id="@+id/water_list_item_add_editTextVolume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Объем"
+        android:inputType="number" />
+
+    <Button
+        android:id="@+id/eat_list_item_add_btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/MyButton"
+        android:text="Добавить" />
+</LinearLayout>

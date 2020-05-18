@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import com.example.fitass.Fragments.ActivityFragment;
 import com.example.fitass.Fragments.EatFragment;
+import com.example.fitass.Fragments.WaterFragment;
 import com.example.fitass.eatlist.Product;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
@@ -49,8 +50,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public boolean bottomBar(BottomNavigationView navigation) {
-       final EatFragment eatFragment = new EatFragment();
-       final ActivityFragment activityFragment=new ActivityFragment();
+        final EatFragment eatFragment = new EatFragment();
+        final ActivityFragment activityFragment=new ActivityFragment();
+        final WaterFragment waterFragment=new WaterFragment();
         final FragmentManager fragmentManager = getSupportFragmentManager();
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -60,8 +62,10 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.ic_main:
                         item.setChecked(true);
-                        item.isChecked();
-
+                        fragmentManager
+                                .beginTransaction().addToBackStack(null)
+                                .replace(R.id.activity_main_fragmentMain, waterFragment)
+                                .commit();
                         break;
                     case R.id.ic_activity:
                         item.setChecked(true);

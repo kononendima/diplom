@@ -17,7 +17,7 @@ import java.util.List;
 public class ActivityListManager {
     Step step;
     UserManager userManager;
-    String todayDate = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
+    String todayDate = new SimpleDateFormat("dd MMMM yyyy ").format(new Date());
     int userId;
     private SQLiteDatabase mDatabase;
     public ActivityListManager(Context context) {

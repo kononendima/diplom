@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
@@ -32,9 +31,9 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class ActivityFragment extends Fragment {
 
-    @BindView(R.id.activity_list_recyclerView)
+    @BindView(R.id.water_list_recyclerView)
     RecyclerView recyclerView;
-    @BindView(R.id.swipeRefreshLayout)
+    @BindView(R.id.swipeRefreshLayoutEat)
     SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.activity_list_switchPedometer)
     Switch switchPedometer;

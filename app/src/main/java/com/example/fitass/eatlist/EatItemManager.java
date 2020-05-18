@@ -56,7 +56,7 @@ public class EatItemManager {
         return eatList;
     }
     public List<Product> getProductList(){
-        int currentUser = userManager.getCurrentUserIdFromMemory();
+
         ArrayList<Product> productList=new ArrayList<>();
         Cursor cursor =mDatabase.rawQuery("SELECT * from "+Product.TABLE_NAME+"",null);
         if (cursor.moveToFirst()) {
