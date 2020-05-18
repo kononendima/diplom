@@ -1,11 +1,28 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">#8BC34A</item>
-        <item name="colorPrimaryDark">#8BC34A</item>
-        <item name="android:navigationBarColor">#8BC34A</item>
+
+    <style name="Theme.MyApp.Main" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <item name="android:statusBarColor">#BF6991</item>
+        <item name="colorButtonNormal">#CD8911</item>
     </style>
+
+    <style name="MyButton" parent="Widget.MaterialComponents.Button">
+
+
+
+        <item name="backgroundTint">#F2BF5E</item>
+
+    </style>
+    <style name="NavigationBar" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+
+
+
+    <item name="backgroundTint">#BF6991</item>
+        <item name="android:state_selected">true</item>
+        <item name="android:color">#FFFFFFFF </item>
+    </style>
+
 
 </resources>

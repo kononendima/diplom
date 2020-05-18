@@ -27,5 +27,6 @@
         android:id="@+id/eat_list_item_add_btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/MyButton"
         android:text="Добавить" />
 </LinearLayout>

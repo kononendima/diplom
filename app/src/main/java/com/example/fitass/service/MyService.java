@@ -39,7 +39,9 @@ public class MyService extends Service {
     SensorEventListener listen;
     ActivityListManager activityListManager;
     int steps=0;
+
     Handler  handler = new Handler();;
+
     boolean flag;
     DateFormat timeFormat;
     Date currentDate;
@@ -53,6 +55,7 @@ public class MyService extends Service {
         steps=activityListManager.getCurrentUserSteps();
     }
 
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
 
@@ -61,19 +64,22 @@ public class MyService extends Service {
         listen = new Pedometer2();
         Sensor accel = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
         sensorManager.registerListener(listen, accel, SensorManager.SENSOR_DELAY_NORMAL);
-
         flag=true;
         recallingSync();
         createNotificationChannel();
         Intent notificationIntent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,
                 0, notificationIntent, 0);
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("Foreground Service")
+         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
+
+                .setContentTitle("Шагомер")
                 .setContentText(valueOf(steps))
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentIntent(pendingIntent)
+
                 .build();
+
+
         startForeground(1, notification);
         return START_STICKY;
     }
@@ -85,7 +91,6 @@ public class MyService extends Service {
         activityListManager=new ActivityListManager(getApplicationContext());
         activityListManager.saveStepsToDb(steps);
         sensorManager.unregisterListener(listen);
-        Toast.makeText(this, "Destroy", Toast.LENGTH_SHORT).show();
         super.onDestroy();
     }
 

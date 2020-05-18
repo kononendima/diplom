@@ -1,12 +1,15 @@
 package com.example.fitass.Fragments;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,19 +28,20 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class ActivityFragment extends Fragment {
-    @BindView(R.id.activity_list_btnStop)
-    Button btnStop;
-    @BindView(R.id.activity_list_btnStart)
-    Button btnStart;
+
     @BindView(R.id.activity_list_recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.swipeRefreshLayout)
     SwipeRefreshLayout swipeRefreshLayout;
-
+    @BindView(R.id.activity_list_switchPedometer)
+    Switch switchPedometer;
     public ArrayList<Step> stepList;
     ActivityListManager activityListManager;
     ActivityListAdapter activityListAdapter;
+    SharedPreferences sPref;
     boolean flag;
     @Nullable
     @Override
@@ -46,33 +50,30 @@ public class ActivityFragment extends Fragment {
         View v=inflater.inflate(R.layout.activity_list, null);
         ButterKnife.bind(this,v);
         activityListManager=new ActivityListManager(getActivity());
-
         activityListAdapter = new ActivityListAdapter(getActivity(), activityListManager.getStepList());
-        // устанавливаем для списка адаптер
         recyclerView.setAdapter(activityListAdapter);
-        btnStart.setOnClickListener(new View.OnClickListener() {
+        checkSwitcherCondition();
+        switchPedometer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                startService();
+            public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
+                    if(switchPedometer.isChecked()){
+                    startService();
+                    saveToMemorySwitcherCondition(true);
+                    }else{
+                        saveToMemorySwitcherCondition(false);
+                        stopService();
+                    }
+                }
             }
-        });
-        btnStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                stopService();
-            }
-        });
+        );
 
         refreshRecycler(swipeRefreshLayout);
         return v;
     }
     public void stopService() {
         getActivity().stopService(new Intent(getActivity(),MyService.class));
-        flag=false;
     }
     public void startService() {
-        flag=true;
-       // updateRecycler();
         Intent serviceIntent = new Intent(getActivity(), MyService.class);
         serviceIntent.putExtra("inputExtra", "Foreground Service Example in Android");
         ContextCompat.startForegroundService(getActivity(), serviceIntent);
@@ -89,5 +90,21 @@ public class ActivityFragment extends Fragment {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+    }
+    public void checkSwitcherCondition(){
+
+        sPref = getActivity().getSharedPreferences("Switcher", Context.MODE_PRIVATE);
+        boolean condition =Boolean.parseBoolean(sPref.getString("condition","0"));
+        if(condition==true){
+            switchPedometer.setChecked(true);
+        }
+    }
+    public void saveToMemorySwitcherCondition(Boolean condition){
+
+        sPref = getActivity().getSharedPreferences("Switcher",MODE_PRIVATE);
+        SharedPreferences.Editor ed = sPref.edit();
+        ed.putString("condition",condition.toString());
+        ed.commit();
+
     }
 }

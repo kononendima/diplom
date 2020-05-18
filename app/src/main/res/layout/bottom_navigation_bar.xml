@@ -10,9 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="#8BC34A"
-        app:itemIconTint="@color/White"
-        app:itemRippleColor="#FFFFFF"
-        app:itemTextColor="@color/White"
+        style="@style/NavigationBar"
         app:menu="@menu/bottom_navigation_menu" />
 </LinearLayout>

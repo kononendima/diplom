@@ -29,12 +29,12 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/activity_main_bottomNavigationBar"
+            style="@style/NavigationBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
-            android:background="#8BC34A"
-            app:itemIconTint="@color/White"
-            app:itemTextColor="@color/White"
+
+
             app:menu="@menu/bottom_navigation_menu" />
     </FrameLayout>
 

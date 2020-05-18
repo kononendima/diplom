@@ -4,15 +4,15 @@
 
     <item
         android:id="@+id/ic_main"
-        android:icon="@drawable/ic_img_foreground"
-        android:title="main" />
+        android:icon="@drawable/waterg"
+        android:title="water" />
     <item
         android:id="@+id/ic_activity"
-        android:icon="@drawable/ic_img_foreground"
+        android:icon="@drawable/run"
         android:title="activity" />
     <item
         android:id="@+id/ic_eat"
-        android:icon="@drawable/ic_img_foreground"
+        android:icon="@drawable/eat"
         android:title="eat" />
 
 </menu>

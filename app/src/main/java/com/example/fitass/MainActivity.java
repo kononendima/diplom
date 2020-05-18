@@ -59,8 +59,12 @@ public class MainActivity extends AppCompatActivity {
 
 
                     case R.id.ic_main:
+                        item.setChecked(true);
+                        item.isChecked();
+
                         break;
                     case R.id.ic_activity:
+                        item.setChecked(true);
                         fragmentManager
                                 .beginTransaction()
                                 .addToBackStack(null)
@@ -68,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
                                 .commit();
                         break;
                     case R.id.ic_eat:
+                        item.setChecked(true);
                             fragmentManager
                                 .beginTransaction().addToBackStack(null)
                                 .replace(R.id.activity_main_fragmentMain, eatFragment)

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -20,6 +21,7 @@ import com.example.fitass.R;
 import com.example.fitass.eatlist.EatItem;
 import com.example.fitass.eatlist.EatItemManager;
 import com.example.fitass.eatlist.EatListAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ import butterknife.ButterKnife;
 
 public class EatFragment extends Fragment implements View.OnClickListener {
     @BindView(R.id.activity_eat_list_btnAdd)
-    Button btnAdd;
+    FloatingActionButton btnAdd;
     @BindView(R.id.activity_eat_list_recyclerView)
     RecyclerView recyclerView;
     EatItemManager eatItemManager;
@@ -68,7 +70,7 @@ public class EatFragment extends Fragment implements View.OnClickListener {
 
         dialog = new Dialog(getActivity());
         dialog.setTitle("Заголовок диалога");
-        dialog.setContentView(R.layout.eat_list_item_add);// ссылка на разметку
+        dialog.setContentView(R.layout.eat_list_item_add);
         editTextProductTitle=(AutoCompleteTextView)dialog.findViewById(R.id.calorie_list_item_add_AutoComplereRextViewProduct);
         editTextWeight=(EditText)dialog.findViewById(R.id.calorie_list_item_add_editTextWeight);
         editTextError=(TextView)dialog.findViewById(R.id.calorie_list_item_add_textViewError);
@@ -95,7 +97,7 @@ public class EatFragment extends Fragment implements View.OnClickListener {
         }else{
             UserManager userManager = new UserManager(getContext());
             int currentUser = userManager.getCurrentUserIdFromMemory();
-            Date date = new Date();
+
             String todayDate = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
             String stringEditTextProductTitle = editTextProductTitle.getText().toString();
             EatItemManager eatItemManager = new EatItemManager(getActivity());
