@@ -5,8 +5,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.fitass.Fragments.EatFragment;
+import com.example.fitass.Fragments.WaterFragment;
 import com.example.fitass.eatlist.EatItem;
 import com.example.fitass.eatlist.Product;
+import com.example.fitass.waterpage.WaterItem;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     static final int VERSION=1;
@@ -27,6 +29,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 EatItem.DATE+","+
                 EatItem.WEIGHT+","+
                 EatItem.CALORIE+")");
+        db.execSQL("create table "+ WaterItem.TABLE_NAME + " ("+
+                "_id integer primary key autoincrement, " +
+                WaterItem.TYPE+ ", "+
+                WaterItem.VOLUME+ ", "+
+                WaterItem.DATE+","+
+                WaterItem.USER_ID+")");
         db.execSQL("create table activity_table ("+
                 "_id integer primary key autoincrement, " +
                 "user_id"+ ", "+

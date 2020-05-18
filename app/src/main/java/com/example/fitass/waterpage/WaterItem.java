@@ -12,6 +12,16 @@ public class WaterItem {
     String date;
     String type;
 
+    public WaterItem() {
+    }
+
+    public WaterItem(String userId, String volume, String date, String type) {
+        this.userId = userId;
+        this.volume = volume;
+        this.date = date;
+        this.type = type;
+    }
+
     public String getUserId() {
         return userId;
     }

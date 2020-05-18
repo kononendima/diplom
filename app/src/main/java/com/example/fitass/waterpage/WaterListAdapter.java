@@ -1,5 +1,6 @@
 package com.example.fitass.waterpage;
 
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -19,7 +20,7 @@ public class WaterListAdapter extends RecyclerView.Adapter<WaterListAdapter.View
         this.waterItems = waterItems;
         this.inflater = LayoutInflater.from(context);
     }
-    public void updateList(List<EatItem> eatItems){
+    public void updateList(List<WaterItem> waterItems){
         this.waterItems=waterItems;
     }
     @Override
@@ -55,4 +56,15 @@ public class WaterListAdapter extends RecyclerView.Adapter<WaterListAdapter.View
            
         }
     }
+//    ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+//        @Override
+//        public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+//            return false;
+//        }
+//
+//        @Override
+//        public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+//            deleteNote(mNotes.get(viewHolder.getAdapterPosition()));
+//        }
+//    };
 }

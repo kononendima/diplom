@@ -21,6 +21,9 @@ import com.example.fitass.R;
 import com.example.fitass.eatlist.EatItem;
 import com.example.fitass.eatlist.EatItemManager;
 import com.example.fitass.eatlist.EatListAdapter;
+import com.example.fitass.waterpage.WaterItem;
+import com.example.fitass.waterpage.WaterItemManager;
+import com.example.fitass.waterpage.WaterListAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
@@ -44,7 +47,7 @@ public class EatFragment extends Fragment implements View.OnClickListener {
     Button btnCreate;
     EditText editTextWeight;
     TextView editTextError;
-
+    WaterItemManager waterItemManager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,7 +60,8 @@ public class EatFragment extends Fragment implements View.OnClickListener {
         ButterKnife.bind(this,v);
 
         btnAdd.setOnClickListener(this);
-
+        eatItemManager=new EatItemManager(getActivity());
+        List<EatItem> eatItems=eatItemManager.getEatItemsList();
         // создаем адаптер
          adapterEat = new EatListAdapter(getActivity(), eatItems);
         // устанавливаем для списка адаптер

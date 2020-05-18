@@ -66,8 +66,6 @@ public class EatItemManager {
                 product.setTitle(cursor.getString(1));
                 product.setCalorieProduct(cursor.getString(2));
                 productList.add(product);
-
-
             } while (cursor.moveToNext());
 
         }
@@ -82,7 +80,6 @@ public class EatItemManager {
             do {
 
                  calorie=cursor.getString(2);
-
 
             } while (cursor.moveToNext());
         }

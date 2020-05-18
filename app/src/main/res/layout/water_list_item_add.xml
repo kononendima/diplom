@@ -18,6 +18,11 @@
         android:hint="Объем"
         android:inputType="number" />
 
+    <TextView
+        android:id="@+id/water_list_item_add_editTextError"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/eat_list_item_add_btnAdd"
         android:layout_width="match_parent"
