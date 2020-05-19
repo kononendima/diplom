@@ -30,6 +30,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
+            style="@style/EditText"
             android:id="@+id/activity_sign_up_textViewLogin"
             android:layout_width="match_parent"
             android:layout_height="55dp"
@@ -37,6 +38,7 @@
             android:textSize="24sp" />
 
         <EditText
+            style="@style/EditText"
             android:id="@+id/activity_sign_up_editTextLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -44,6 +46,7 @@
             android:inputType="textPersonName" />
 
         <TextView
+            style="@style/EditText"
             android:id="@+id/activity_sign_up_textViewPassword"
             android:layout_width="match_parent"
             android:layout_height="55dp"
@@ -51,6 +54,7 @@
             android:textSize="24sp" />
 
         <EditText
+            style="@style/EditText"
             android:id="@+id/activity_sign_up_editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,6 +62,7 @@
             android:inputType="textPersonName" />
 
         <TextView
+            style="@style/EditText"
             android:id="@+id/activity_sign_up_textViewHeight"
             android:layout_width="match_parent"
             android:layout_height="55dp"
@@ -65,6 +70,7 @@
             android:textSize="24sp" />
 
         <EditText
+            style="@style/EditText"
             android:id="@+id/activity_sign_up_editTextHeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,6 +78,7 @@
             android:inputType="textPersonName" />
 
         <TextView
+            style="@style/EditText"
             android:id="@+id/activity_sign_up_textViewWeight"
             android:layout_width="match_parent"
             android:layout_height="55dp"
@@ -79,6 +86,7 @@
             android:textSize="24sp" />
 
         <EditText
+            style="@style/EditText"
             android:id="@+id/activity_sign_up_editTextWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -86,6 +94,7 @@
             android:inputType="textPersonName" />
 
         <TextView
+            style="@style/EditText"
             android:id="@+id/activity_sign_up_textViewLifestyle"
             android:layout_width="match_parent"
             android:layout_height="55dp"
@@ -93,6 +102,7 @@
             android:textSize="24sp" />
 
         <Spinner
+            style="@style/EditText"
             android:id="@+id/activity_sign_up_spinnerLifestyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

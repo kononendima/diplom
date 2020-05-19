@@ -8,6 +8,7 @@
 
     <EditText
         android:id="@+id/activity_sign_id_EditTextLogin"
+        style="@style/EditText"
         android:layout_width="212dp"
         android:layout_height="45dp"
         android:layout_marginStart="88dp"
@@ -21,6 +22,7 @@
 
     <EditText
         android:id="@+id/activity_sign_id_EditTextPassword"
+        style="@style/EditText"
         android:layout_width="212dp"
         android:layout_height="45dp"
         android:layout_marginStart="88dp"

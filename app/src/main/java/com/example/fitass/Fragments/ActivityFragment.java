@@ -12,6 +12,7 @@ import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,11 +37,11 @@ public class ActivityFragment extends Fragment {
     @BindView(R.id.swipeRefreshLayoutEat)
     SwipeRefreshLayout swipeRefreshLayout;
     @BindView(R.id.activity_list_switchPedometer)
-    Switch switchPedometer;
-    public ArrayList<Step> stepList;
-    ActivityListManager activityListManager;
-    ActivityListAdapter activityListAdapter;
-    SharedPreferences sPref;
+    SwitchCompat switchPedometer;
+    private ArrayList<Step> stepList;
+    private ActivityListManager activityListManager;
+    private ActivityListAdapter activityListAdapter;
+    private SharedPreferences sPref;
     boolean flag;
     @Nullable
     @Override

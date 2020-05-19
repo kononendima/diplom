@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <AutoCompleteTextView
+        style="@style/EditText"
         android:id="@+id/water_list_item_add_AutoComplereRextViewProduct"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -11,6 +12,7 @@
         android:hint="Вид жидкости" />
 
     <EditText
+        style="@style/EditText"
         android:id="@+id/water_list_item_add_editTextVolume"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,6 +21,7 @@
         android:inputType="number" />
 
     <TextView
+        style="@style/EditText"
         android:id="@+id/water_list_item_add_editTextError"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
