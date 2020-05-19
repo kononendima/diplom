@@ -13,15 +13,22 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Switch
+            <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/activity_list_switchPedometer"
+                style="@style/Switcher"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Шагомер" />
+
+                android:checked="false"
+                android:text="Шагомер"
+                android:textColorHighlight="#E8E5E5"
+                android:textColorLink="#E8E5E5"
+                android:textSize="24sp" />
         </LinearLayout>
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayoutEat"

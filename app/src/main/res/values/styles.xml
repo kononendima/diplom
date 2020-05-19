@@ -2,18 +2,14 @@
 
     <!-- Base application theme. -->
 
-    <style name="Theme.MyApp.Main" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.MyApp.Main" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
 
         <item name="android:statusBarColor">#BF6991</item>
         <item name="colorButtonNormal">#CD8911</item>
     </style>
 
     <style name="MyButton" parent="Widget.MaterialComponents.Button">
-
-
-
         <item name="backgroundTint">#F2BF5E</item>
-
     </style>
     <style name="NavigationBar" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
 
@@ -22,6 +18,16 @@
     <item name="backgroundTint">#BF6991</item>
         <item name="android:state_selected">true</item>
         <item name="android:color">#FFFFFFFF </item>
+    </style>
+    <style name="EditText" parent="Widget.MaterialComponents.TextView">
+        <item name="backgroundTint">#BF6991</item>
+        <item name="android:textSize">18dp</item>
+    </style>
+    <style name="Switcher" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="useMaterialThemeColors">false</item>
+        <item name="thumbTint">#F2BF5E</item>
+
+        <item name="trackTint">#BF6991</item>
     </style>
 
 
