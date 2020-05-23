@@ -35,6 +35,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 WaterItem.TYPE+ ", "+
                 WaterItem.VOLUME+ ", "+
                 WaterItem.DATE+","+
+                EatItem.UUID+","+
                 WaterItem.USER_ID+")");
         db.execSQL("create table activity_table ("+
                 "_id integer primary key autoincrement, " +

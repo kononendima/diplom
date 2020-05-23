@@ -23,14 +23,21 @@ public class WaterItemManager {
                 DataBaseHelper(context).getWritableDatabase();
 
     }
-    public void saveStepsToDb(WaterItem waterItem){
+    public void addWater(WaterItem waterItem){
 
             ContentValues values = new ContentValues();
             values.put(waterItem.USER_ID, userManager.getCurrentUserIdFromMemory());
             values.put(waterItem.TYPE, waterItem.getType());
             values.put(waterItem.VOLUME, waterItem.getVolume());
             values.put(waterItem.DATE, waterItem.getDate());
+            values.put(waterItem.UUID,waterItem.uuid);
             mDatabase.insert(waterItem.TABLE_NAME,null,values);
+
+    }
+    public void deleteWater(String uuid){
+
+
+        mDatabase.delete(WaterItem.TABLE_NAME,"uuid ='"+uuid+"'",null);
 
     }
     public List<WaterItem> getWaterList(){
@@ -43,9 +50,9 @@ public class WaterItemManager {
                 waterItem.setType(cursor.getString(1));
                 waterItem.setVolume(cursor.getString(2));
                 waterItem.setDate(cursor.getString(3));
+                waterItem.setUuid(cursor.getString(4));
                 waterList.add(waterItem);
             } while (cursor.moveToNext());
-
         }
         cursor.close();
 

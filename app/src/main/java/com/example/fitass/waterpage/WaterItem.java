@@ -7,19 +7,33 @@ public class WaterItem {
     public static final String VOLUME="volume";
     public static final String DATE="date";
     public static final String TYPE="type";
+    public static final String UUID="uuid";
     String userId;
     String volume;
     String date;
     String type;
+    String uuid;
 
     public WaterItem() {
+
     }
 
-    public WaterItem(String userId, String volume, String date, String type) {
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+
+
+    public WaterItem(String userId, String volume, String date, String type,String uuid) {
         this.userId = userId;
         this.volume = volume;
         this.date = date;
         this.type = type;
+        this.uuid=uuid;
     }
 
     public String getUserId() {

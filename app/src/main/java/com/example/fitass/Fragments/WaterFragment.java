@@ -27,6 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -99,8 +100,9 @@ public class WaterFragment extends Fragment implements View.OnClickListener {
                     userManager = new UserManager(getActivity());
                     String id = String.valueOf(userManager.getCurrentUserIdFromMemory());
                     String todayDate = new SimpleDateFormat("dd MMMM yyyy").format(new Date());
-                    WaterItem waterItem = new WaterItem(id, editTextProductVolume.getText().toString(), todayDate, editTextProductType.getText().toString());
-                    waterItemManager.saveStepsToDb(waterItem);
+                    UUID uuid= UUID.randomUUID();
+                    WaterItem waterItem = new WaterItem(id, editTextProductVolume.getText().toString(), todayDate, editTextProductType.getText().toString(),uuid.toString());
+                    waterItemManager.addWater(waterItem);
                     waterItems=waterItemManager.getWaterList();
                     waterListAdapter.updateList(waterItems);
                     dialog.dismiss();
