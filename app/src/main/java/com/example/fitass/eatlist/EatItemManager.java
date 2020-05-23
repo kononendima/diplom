@@ -24,11 +24,16 @@ public class EatItemManager {
         values.put(eatItem.CALORIE,eatItem.getCalorie());
         values.put(eatItem.USER_ID,currentUser);
         values.put(eatItem.WEIGHT,eatItem.getWeight());
+        values.put(eatItem.UUID,eatItem.getUuid().toString());
         return values;
     }
     public void addEatItem(EatItem eatItem) {
         ContentValues values = getContentValues(eatItem);
         mDatabase.insert(eatItem.TABLE_NAME, null, values);
+    }
+    public void deleteEatItem(String uuid) {
+
+        mDatabase.delete(EatItem.TABLE_NAME,"uuid ='"+uuid+"'",null);
     }
     public EatItemManager(Context context) {
         mDatabase=new

@@ -9,17 +9,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.CompoundButton;
+
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.fitass.R;
 import com.example.fitass.UserManager;
-import com.example.fitass.eatlist.EatItem;
-import com.example.fitass.eatlist.EatListAdapter;
+
 import com.example.fitass.waterpage.WaterItem;
 import com.example.fitass.waterpage.WaterItemManager;
 import com.example.fitass.waterpage.WaterListAdapter;

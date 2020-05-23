@@ -28,6 +28,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 EatItem.USER_ID+ ", "+
                 EatItem.DATE+","+
                 EatItem.WEIGHT+","+
+                EatItem.UUID+","+
                 EatItem.CALORIE+")");
         db.execSQL("create table "+ WaterItem.TABLE_NAME + " ("+
                 "_id integer primary key autoincrement, " +

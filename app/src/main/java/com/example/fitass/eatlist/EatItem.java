@@ -2,6 +2,7 @@ package com.example.fitass.eatlist;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 public class EatItem {
     public static final String TABLE_NAME = "eat_table";
@@ -11,10 +12,25 @@ public class EatItem {
     public static final String USER_ID="user_id";
     public static final String ID = "_id";
     public static final String WEIGHT = "weight";
+    public static final String UUID = "uuid";
     private String date;
     private String calorie;
     private String eat;
     private String userId;
+    private String uuid;
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+
+
+
+
 
     public void setCalorie(String calorie) {
         this.calorie = calorie;
@@ -32,19 +48,21 @@ public class EatItem {
 
 
 
-    public EatItem(String eat, String date, String calorie,String userId,String weight) {
+    public EatItem(String eat, String date, String calorie,String userId,String weight,String uuid) {
         this.date = date;
         this.calorie = calorie;
         this.eat = eat;
         this.userId=userId;
         this.weight=weight;
+        this.uuid=uuid;
     }
-    public EatItem(String id, String eat, String date, String calorie,String userId,String weight) {
+    public EatItem(String id, String eat, String date, String calorie,String userId,String weight,String uuid) {
         this.date = date;
         this.calorie = calorie;
         this.eat = eat;
         this.userId=userId;
         this.weight=weight;
+        this.uuid=uuid;
     }
     public String getUserId() {
         return userId;
