@@ -18,7 +18,7 @@ public class UserManager  {
     User user;
     private SQLiteDatabase mDatabase;
     SharedPreferences sPref;
-    final String SAVED_TEXT = "saved_text";
+
     public UserManager(Context context) {
         this.mContext = context;
         mDatabase=new

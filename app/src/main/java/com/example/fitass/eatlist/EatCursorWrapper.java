@@ -3,6 +3,8 @@ package com.example.fitass.eatlist;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
+import java.util.UUID;
+
 public class EatCursorWrapper extends CursorWrapper {
 
     /**
@@ -21,7 +23,8 @@ public class EatCursorWrapper extends CursorWrapper {
         String userId = getString(getColumnIndex(EatItem.USER_ID));
         String calorie = getString(getColumnIndex(EatItem.CALORIE));
         String weight = getString(getColumnIndex(EatItem.WEIGHT));
-        EatItem eatItem = new EatItem(id, eat,date,calorie,userId,weight);
+        String uuid = getString(getColumnIndex(EatItem.UUID));
+        EatItem eatItem = new EatItem(id, eat,date,calorie,userId,weight,uuid);
         return eatItem;
     }
 }

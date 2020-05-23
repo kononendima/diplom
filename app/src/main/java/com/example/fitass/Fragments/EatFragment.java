@@ -30,6 +30,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -107,7 +109,8 @@ public class EatFragment extends Fragment implements View.OnClickListener {
             EatItemManager eatItemManager = new EatItemManager(getActivity());
             int calorie = Integer.parseInt(eatItemManager.getCalorieProduct(stringEditTextProductTitle));
             int result = (calorie * (Integer.parseInt(editTextWeight.getText().toString()))) / 100;
-            eatItemManager.addEatItem(new EatItem(stringEditTextProductTitle, todayDate, "Калорий " + result, String.valueOf(currentUser),editTextWeight.getText().toString()));
+            String uuid=UUID.randomUUID().toString();
+            eatItemManager.addEatItem(new EatItem(stringEditTextProductTitle, todayDate, "Калорий " + result, String.valueOf(currentUser),editTextWeight.getText().toString(),uuid));
             dialog.dismiss();
         }
     }
