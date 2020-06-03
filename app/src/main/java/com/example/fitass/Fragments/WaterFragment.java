@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.fitass.R;
+import com.example.fitass.SyncDb;
 import com.example.fitass.UserManager;
 
 import com.example.fitass.waterpage.WaterItem;
@@ -64,6 +65,11 @@ public class WaterFragment extends Fragment implements View.OnClickListener {
         View v=inflater.inflate(R.layout.water_list, container, false);
         ButterKnife.bind(this,v);
         btnAdd.setOnClickListener(this);
+
+        SyncDb syncDb=new SyncDb(getActivity());
+        syncDb.downloadDB(
+                getActivity().getFilesDir().toString()
+        );
 
         waterItemManager=new WaterItemManager(getActivity());
         waterItems=waterItemManager.getWaterList();

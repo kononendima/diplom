@@ -18,6 +18,9 @@ import com.example.fitass.Fragments.EatFragment;
 import com.example.fitass.Fragments.WaterFragment;
 import com.example.fitass.eatlist.Product;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import butterknife.BindView;
@@ -44,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
             values.put(Product.CALROIE_PRODUCT, cal.get(i).toString());
             mDatabase.insert(Product.TABLE_NAME, null, values);
         }
-
     }
 
 
@@ -58,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
-
-
                     case R.id.ic_main:
                         item.setChecked(true);
                         fragmentManager

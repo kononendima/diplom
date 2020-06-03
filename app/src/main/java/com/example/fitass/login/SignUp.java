@@ -15,6 +15,11 @@ import com.example.fitass.R;
 import com.example.fitass.User;
 import com.example.fitass.UserManager;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -35,12 +40,14 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
         editTextHeight=(EditText)findViewById(R.id.activity_sign_up_editTextHeight);
         editTextWeight=(EditText)findViewById(R.id.activity_sign_up_editTextWeight);
         spinnerLifestyle=(Spinner) findViewById(R.id.activity_sign_up_spinnerLifestyle);
-        String[] data = {"активный", "сидячий", "средний"};
+        ArrayList<String> data = new ArrayList<String>(Arrays.asList("активный", "сидячий", "средний"));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLifestyle.setAdapter(adapter);
+
         buttonRegistration=(Button)findViewById(R.id.activity_sign_up_buttonRegistration);
         buttonRegistration.setOnClickListener(this);
+        spinnerLifestyle.setSelection(adapter.getPosition("сидячий"));
 
     }
 

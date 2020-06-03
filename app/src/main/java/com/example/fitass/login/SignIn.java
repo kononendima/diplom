@@ -9,6 +9,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -42,8 +43,13 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_sign_in);
         ButterKnife.bind(this);
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION)== PackageManager.PERMISSION_DENIED){
-            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACTIVITY_RECOGNITION},
-                    1);
+            requestPerms();
+        }
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
+            requestPerms();
+        }
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
+            requestPerms();
         }
         editTextLogin=(EditText)findViewById(R.id.activity_sign_id_EditTextLogin);
         editTextPassword=(EditText)findViewById(R.id.activity_sign_id_EditTextPassword);
@@ -92,6 +98,12 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }
+        }
+    }
+    private void requestPerms(){
+        String[] perm = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACTIVITY_RECOGNITION,Manifest.permission.READ_EXTERNAL_STORAGE};
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            ActivityCompat.requestPermissions(this,perm,123);
         }
     }
 }
