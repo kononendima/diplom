@@ -28,11 +28,18 @@ import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.Observable;
+import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.observers.DisposableSingleObserver;
+import io.reactivex.schedulers.Schedulers;
 
 public class SignIn extends AppCompatActivity implements View.OnClickListener {
     EditText editTextLogin,editTextPassword;
     TextView textViewRegistration;
     String inputLogin,inputPassword;
+    protected CompositeDisposable disposable = new CompositeDisposable();
     User user;
     UserManager userManager;
     @BindView(R.id.activity_sign_in_textViewError)
@@ -68,6 +75,9 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
             values.put(Product.CALROIE_PRODUCT, cal.get(i).toString());
             mDatabase.insert(Product.TABLE_NAME, null, values);
         }
+        userManager=new UserManager(this);
+
+
         //this.deleteDatabase("DataBase.db"); //Удаление бд
     }
 
@@ -78,9 +88,9 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
                  inputLogin=editTextLogin.getText().toString();
                  inputPassword=editTextPassword.getText().toString();
                  userManager=new UserManager(this);
-
-                user= userManager.checkRegistration(inputLogin,inputPassword);
-                entrance(user);
+                 userManager.checkRegistration();
+//                 user=userManager.user;
+                 entrance(user);
                 break;
             case R.id.activity_sign_in_textViewRegistration:
                 Intent intent=new Intent(this, SignUp.class);

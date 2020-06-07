@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
 
 import com.example.fitass.Retrofit.RetrofitService;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -33,12 +34,14 @@ import retrofit2.Retrofit;
 
 public class SyncDb {
     Context mContext;
+    private FirebaseAuth mAuth;
 
     public SyncDb(Context mContext) {
         this.mContext = mContext;
     }
 
     public void downloadDB(String path) {
+        mAuth = FirebaseAuth.getInstance();
         RetrofitService.getInstance()
                 .getJSONApi()
                 .downloadDB("download")
@@ -52,20 +55,16 @@ public class SyncDb {
                     @Override
                     public void onNext(ResponseBody responseBody) {
 
-                            saveFile(responseBody);
-                        Log.d("abc","onNext");
-
-
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("abc","error");
-                        e.printStackTrace();
+
                     }
+
                     @Override
                     public void onComplete() {
-                        Log.d("abc","Completed");
+
                     }
                 });
 

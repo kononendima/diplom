@@ -1,12 +1,15 @@
 package com.example.fitass;
 
-public class User {
+import com.google.firebase.database.IgnoreExtraProperties;
+
+import java.io.Serializable;
+@IgnoreExtraProperties
+public class User implements Serializable {
     public static final String TABLE_NAME = "user_table";
     public static final String ID = "_id";
     public static final String LOGIN = "login";
     public static final String PASSWORD = "password";
-    public static final String STEPS_ID = "steps_id";
-    public static final String CALORIE_ID = "calorie_id";
+
     public static final String HEIGHT = "height";
     public static final String WEIGHT = "weight";
     public static final String LIFESTYLE = "lifestyle";
@@ -14,37 +17,16 @@ public class User {
     String id;
     String login;
     String password;
-    String stepsId;
-    String calorieId;
     String height;
     String weight;
     String lifestyle;
     public User() {
     }
 
-    public String getStepsId() {
-        return stepsId;
-    }
-
-    public void setStepsId(String stepsId) {
-        this.stepsId = stepsId;
-    }
-
-    public String getcalorieId() {
-        return calorieId;
-    }
-
-    public void setcalorieId(String calorieId) {
-        this.calorieId = calorieId;
-    }
-
-
-    public User(String id, String login, String password, String stepsId, String calorieId, String height, String weight, String lifestyle) {
+    public User(String id, String login, String password, String height, String weight, String lifestyle) {
         this.id = id;
         this.login = login;
         this.password = password;
-        this.stepsId = stepsId;
-        this.calorieId = calorieId;
         this.height = height;
         this.weight = weight;
         this.lifestyle = lifestyle;
@@ -58,12 +40,10 @@ public class User {
         this.id = id;
     }
 
-    public User(String login, String password, String stepsId, String calorieId, String height, String weight, String lifestyle) {
+    public User(String login, String password,String height, String weight, String lifestyle) {
 
         this.login = login;
         this.password = password;
-        this.stepsId = stepsId;
-        this.calorieId = calorieId;
         this.height = height;
         this.weight = weight;
         this.lifestyle = lifestyle;

@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -26,14 +27,26 @@ android {
 }
 
 dependencies {
-    compile group: 'com.google.guava', name: 'guava', version: '29.0-android'
+    // Firebase
+    implementation 'com.google.firebase:firebase-core:16.0.9'
+
+
+// Firebase UI
+    implementation 'com.firebaseui:firebase-ui-auth:5.0.0'
+    implementation 'com.firebaseui:firebase-ui-database:5.0.0'
+    implementation 'com.google.firebase:firebase-firestore:21.4.3'
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
+    implementation 'com.google.firebase:firebase-database:16.0.4'
+
+    implementation group: 'com.google.guava', name: 'guava', version: '29.0-android'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     //Retrofit
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     //Конвертер JSON
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
