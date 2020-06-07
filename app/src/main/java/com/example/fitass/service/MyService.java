@@ -72,8 +72,8 @@ public class MyService extends Service {
                 0, notificationIntent, 0);
          Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
 
-                .setContentTitle("Шагомер")
-                .setContentText(valueOf(steps))
+                .setContentTitle("Шагомер работает")
+
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentIntent(pendingIntent)
 
