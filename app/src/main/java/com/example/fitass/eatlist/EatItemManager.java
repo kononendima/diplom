@@ -68,7 +68,7 @@ public class EatItemManager {
             do {
                 Product product=new Product();
                 product.setId(cursor.getString(0));
-                product.setTitle(cursor.getString(1));
+                product.setTitle(cursor.getString( 1));
                 product.setCalorieProduct(cursor.getString(2));
                 productList.add(product);
             } while (cursor.moveToNext());

@@ -49,7 +49,7 @@ public class ActivityListAdapter extends RecyclerView.Adapter<ActivityListAdapte
         else
             holder.distance.setText(calcDistance(stepInDay).substring(0,3).concat(" км"));
         if(calcDistance(stepInDay).length()>3)
-            holder.calorie.setText(String.valueOf(Double.parseDouble(calcDistance(stepInDay))*0.5*userWeight).substring(0,4));
+            holder.calorie.setText(String.valueOf(Double.parseDouble(calcDistance(stepInDay))*0.5*userWeight).substring(0,5));
         else
             holder.calorie.setText(String.valueOf(Double.parseDouble(calcDistance(stepInDay))*0.5*userWeight).substring(0,3));
     }
