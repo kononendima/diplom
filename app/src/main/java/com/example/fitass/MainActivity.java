@@ -1,34 +1,23 @@
 package com.example.fitass;
 
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.OnApplyWindowInsetsListener;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.FragmentManager;
-
-import android.Manifest;
 import android.content.ContentValues;
-import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+
+import com.example.fitAss.R;
 import com.example.fitAss.databinding.ActivityMainBinding;
-import com.example.fitAss.databinding.ActivitySignUpBinding;
 import com.example.fitass.Fragments.ActivityFragment;
 import com.example.fitass.Fragments.EatFragment;
 import com.example.fitass.Fragments.WaterFragment;
 import com.example.fitass.eatlist.Product;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 import java.util.Arrays;
-import com.example.fitAss.R;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
