@@ -51,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
             values.put(Product.CALROIE_PRODUCT, cal.get(i).toString());
             mDatabase.insert(Product.TABLE_NAME, null, values);
         }
+        getSupportFragmentManager().beginTransaction()
+                .addToBackStack(null)
+                .replace(R.id.activity_main_fragmentMain, new WaterFragment())
+                .commit();
+        binding.activityMainBottomNavigationBar.setSelectedItemId(R.id.ic_main);
 
     }
 
