@@ -1,7 +1,6 @@
 package com.example.fitass.eatlist;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fitAss.R;
 
-import java.nio.InvalidMarkException;
 import java.util.List;
 
 public class EatListAdapter extends RecyclerView.Adapter<EatListAdapter.ViewHolder>{
@@ -64,11 +62,11 @@ public class EatListAdapter extends RecyclerView.Adapter<EatListAdapter.ViewHold
 
         ViewHolder(View view){
             super(view);
-            eat = (TextView) view.findViewById(R.id.eat_list_item_textViewType);
+            eat = (TextView) view.findViewById(R.id.eatListItemType);
             date = (TextView) view.findViewById(R.id.eat_list_item_textViewDate);
-            calorie = (TextView) view.findViewById(R.id.eat_list_item_textViewСalorie);
-            weight = (TextView) view.findViewById(R.id.eat_list_item_textViewWeight);
-            imageView=(ImageView) view.findViewById(R.id.eat_list_item_btnCross);
+            calorie = (TextView) view.findViewById(R.id.eat_list_item_textViewCalorie);
+            weight = (TextView) view.findViewById(R.id.eatListItemTextViewWeight);
+            imageView=(ImageView) view.findViewById(R.id.eatListItemBtnCross);
         }
     }
 }
