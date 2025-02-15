@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import com.example.fitass.R;
 //import com.example.fitass.ServicePedometer;
+import com.example.fitAss.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;

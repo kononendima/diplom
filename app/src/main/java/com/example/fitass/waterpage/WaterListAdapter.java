@@ -8,7 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.fitass.R;
+
+import com.example.fitAss.R;
 import com.example.fitass.eatlist.EatItem;
 import java.util.List;
 

@@ -19,9 +19,10 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
+import com.example.fitAss.R;
 import com.example.fitass.Fragments.ActivityFragment;
 import com.example.fitass.MainActivity;
-import com.example.fitass.R;
+
 import com.example.fitass.activitypage.ActivityListManager;
 import com.example.fitass.activitypage.Step;
 
@@ -38,9 +39,10 @@ public class MyService extends Service {
     SensorManager sensorManager;
     SensorEventListener listen;
     ActivityListManager activityListManager;
-    int steps=0;
+    int steps = 0;
 
-    Handler  handler = new Handler();;
+    Handler handler = new Handler();
+    ;
 
     boolean flag;
     DateFormat timeFormat;
@@ -51,8 +53,8 @@ public class MyService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        activityListManager=new ActivityListManager(getApplicationContext());
-        steps=activityListManager.getCurrentUserSteps();
+        activityListManager = new ActivityListManager(getApplicationContext());
+        steps = activityListManager.getCurrentUserSteps();
     }
 
 
@@ -64,19 +66,16 @@ public class MyService extends Service {
         listen = new Pedometer2();
         Sensor accel = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
         sensorManager.registerListener(listen, accel, SensorManager.SENSOR_DELAY_NORMAL);
-        flag=true;
+        flag = true;
         recallingSync();
         createNotificationChannel();
         Intent notificationIntent = new Intent(this, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,
                 0, notificationIntent, 0);
-         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("Шагомер работает")
-
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentIntent(pendingIntent)
-
                 .build();
 
 
@@ -87,8 +86,8 @@ public class MyService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        flag=false;
-        activityListManager=new ActivityListManager(getApplicationContext());
+        flag = false;
+        activityListManager = new ActivityListManager(getApplicationContext());
         activityListManager.saveStepsToDb(steps);
         sensorManager.unregisterListener(listen);
         super.onDestroy();
@@ -113,28 +112,29 @@ public class MyService extends Service {
     }
 
     public void recallingSync() {
-        currentDate= new Date();
-         Runnable r = new Runnable() {
+        currentDate = new Date();
+        Runnable r = new Runnable() {
             public void run() {
                 timeFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
                 final String currentTimeString = timeFormat.format(currentDate);
-               if(currentTimeString=="00:00:00" || currentTimeString=="00:00:01" || currentTimeString=="00:00:02" || currentTimeString=="00:00:03" || currentTimeString=="00:00:04" || currentTimeString=="00:00:05" )
-                   steps=0;
+                if (currentTimeString == "00:00:00" || currentTimeString == "00:00:01" || currentTimeString == "00:00:02" || currentTimeString == "00:00:03" || currentTimeString == "00:00:04" || currentTimeString == "00:00:05")
+                    steps = 0;
                 activityListManager = new ActivityListManager(getApplicationContext());
                 activityListManager.saveStepsToDb(steps);
                 if (flag) {
                     handler.postDelayed(this, 5000);
-                }else {
-                   handler.removeCallbacksAndMessages(this);
+                } else {
+                    handler.removeCallbacksAndMessages(this);
                 }
             }
         };
-        if(flag==true) {
+        if (flag == true) {
             r.run();
-        }else{
+        } else {
             handler.removeCallbacksAndMessages(r);
         }
     }
+
     public class Pedometer2 implements SensorEventListener {
 
         @Override
@@ -143,9 +143,10 @@ public class MyService extends Service {
                 getAccelerometer(event);
             }
         }
+
         private void getAccelerometer(SensorEvent event) {
             float[] values = event.values;
-            if(values[0]==1.0){
+            if (values[0] == 1.0) {
                 steps++;
             }
         }

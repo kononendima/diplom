@@ -8,7 +8,7 @@
         <item name="colorButtonNormal">#CD8911</item>
     </style>
 
-    <style name="MyButton" parent="Widget.MaterialComponents.Button">
+    <style name="MyButton" parent="">
         <item name="backgroundTint">#F2BF5E</item>
     </style>
     <style name="NavigationBar" parent="Widget.MaterialComponents.BottomNavigationView.Colored">

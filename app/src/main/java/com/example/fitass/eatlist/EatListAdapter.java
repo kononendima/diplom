@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fitass.R;
+
+import com.example.fitAss.R;
 
 import java.nio.InvalidMarkException;
 import java.util.List;
@@ -43,14 +44,11 @@ public class EatListAdapter extends RecyclerView.Adapter<EatListAdapter.ViewHold
         holder.date.setText(eatItem.getDate());
         holder.calorie.setText(eatItem.getCalorie());
         holder.weight.setText("Масса "+eatItem.getWeight()+" грамм");
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                eatItemManager.deleteEatItem(eatItem.getUuid());
-                eatItems.remove(position);
-                notifyItemRemoved(position);
-                notifyItemRangeChanged(position, eatItems.size());
-            }
+        holder.imageView.setOnClickListener(v -> {
+            eatItemManager.deleteEatItem(eatItem.getUuid());
+            eatItems.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, eatItems.size());
         });
     }
 

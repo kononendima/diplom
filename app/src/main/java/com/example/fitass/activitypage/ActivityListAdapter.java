@@ -7,7 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.fitass.R;
+
+import com.example.fitAss.R;
 import com.example.fitass.UserManager;
 
 import java.util.List;

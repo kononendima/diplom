@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".login.SignUp">
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/activity_sign_up_buttonRegistration"
-
+        android:visibility="visible"
         android:layout_width="237dp"
         android:layout_height="50dp"
         android:layout_marginTop="156dp"
@@ -115,6 +114,7 @@
         android:layout_width="237dp"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/activity_sign_up_buttonRegistration"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
