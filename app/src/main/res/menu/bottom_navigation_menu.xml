@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     >
-
+    <item
+        android:id="@+id/ic_profile"
+        android:icon="@drawable/profile"
+        android:title="recipe" />
     <item
         android:id="@+id/ic_main"
         android:icon="@drawable/waterg"

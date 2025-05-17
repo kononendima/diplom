@@ -14,6 +14,7 @@ import com.example.fitass.Fragments.ActivityFragment;
 import com.example.fitass.Fragments.EatFragment;
 import com.example.fitass.Fragments.WaterFragment;
 import com.example.fitass.eatlist.Product;
+import com.example.fitass.profile.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -42,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
         }
         getSupportFragmentManager().beginTransaction()
                 .addToBackStack(null)
-                .replace(R.id.activity_main_fragmentMain, new WaterFragment())
+                .replace(R.id.activity_main_fragmentMain, new ProfileFragment())
                 .commit();
-        binding.activityMainBottomNavigationBar.setSelectedItemId(R.id.ic_main);
+        binding.activityMainBottomNavigationBar.setSelectedItemId(R.id.ic_profile);
 
     }
 
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         final ActivityFragment activityFragment = new ActivityFragment();
         final WaterFragment waterFragment = new WaterFragment();
         final FragmentManager fragmentManager = getSupportFragmentManager();
+        ProfileFragment profileFragment = new ProfileFragment();
         navigation.setOnNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
 
@@ -74,6 +76,12 @@ public class MainActivity extends AppCompatActivity {
                 fragmentManager.beginTransaction()
                         .addToBackStack(null)
                         .replace(R.id.activity_main_fragmentMain, eatFragment)
+                        .commit();
+            } else if (id == R.id.ic_profile) {
+                item.setChecked(true);
+                fragmentManager.beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.activity_main_fragmentMain, profileFragment)
                         .commit();
             }
             return false;

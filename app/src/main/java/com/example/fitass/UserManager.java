@@ -1,17 +1,12 @@
 package com.example.fitass;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.ContentValues;
 import android.content.Context;
-
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
-import android.widget.Toast;
-
-import com.example.fitass.eatlist.EatItem;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class UserManager  {
     private Context mContext;
@@ -77,6 +72,11 @@ public class UserManager  {
         sPref = mContext.getSharedPreferences("Data",Context.MODE_PRIVATE);
         int id = Integer.parseInt(sPref.getString("id","0"));
         return id;
+    }
+
+    public String getCurrentUserLogin() {
+        sPref = mContext.getSharedPreferences("Data", Context.MODE_PRIVATE);
+        return sPref.getString("login", "0");
     }
     public int getCurrentUserWeight(){
         sPref = mContext.getSharedPreferences("Data",Context.MODE_PRIVATE);
