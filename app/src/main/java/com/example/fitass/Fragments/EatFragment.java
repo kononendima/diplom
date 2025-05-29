@@ -1,6 +1,5 @@
 package com.example.fitass.Fragments;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +12,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fitAss.R;
 import com.example.fitAss.databinding.ActivityEatListBinding;
@@ -23,12 +21,12 @@ import com.example.fitass.eatlist.EatItemManager;
 import com.example.fitass.eatlist.EatListAdapter;
 import com.example.fitass.eatlist.Product;
 import com.example.fitass.waterpage.WaterItemManager;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 
@@ -61,9 +59,7 @@ public class EatFragment extends Fragment {
         });
         eatItemManager = new EatItemManager(getActivity());
         List<EatItem> eatItems = eatItemManager.getEatItemsList();
-        // создаем адаптер
         adapterEat = new EatListAdapter(getActivity(), eatItems);
-        // устанавливаем для списка адаптер
         binding.activityEatListRecyclerView.setAdapter(adapterEat);
 
 
@@ -109,13 +105,13 @@ public class EatFragment extends Fragment {
             UserManager userManager = new UserManager(getContext());
             int currentUser = userManager.getCurrentUserIdFromMemory();
 
-            String todayDate = new SimpleDateFormat("dd MMMM yyyy").format(new Date());
+            String todayDate = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(new Date());
             String stringEditTextProductTitle = editTextProductTitle.getText().toString();
             EatItemManager eatItemManager = new EatItemManager(getActivity());
             int calorie = Integer.parseInt(eatItemManager.getCalorieProduct(stringEditTextProductTitle));
             int result = (calorie * (Integer.parseInt(editTextWeight.getText().toString()))) / 100;
             String uuid = UUID.randomUUID().toString();
-            eatItemManager.addEatItem(new EatItem(stringEditTextProductTitle, todayDate, "Калорий " + result, String.valueOf(currentUser), editTextWeight.getText().toString(), uuid));
+            eatItemManager.addEatItem(new EatItem(stringEditTextProductTitle, todayDate, String.valueOf(result), String.valueOf(currentUser), editTextWeight.getText().toString(), uuid));
             dialog.dismiss();
         }
     }

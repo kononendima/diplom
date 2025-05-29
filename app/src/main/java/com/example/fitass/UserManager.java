@@ -90,4 +90,21 @@ public class UserManager  {
         return height;
     }
 
+    public void updateUserWeight(int userId, float newWeight) {
+        ContentValues values = new ContentValues();
+        values.put(User.WEIGHT, String.valueOf(newWeight));
+        mDatabase.update(User.TABLE_NAME, values, User.ID + " = ?", new String[]{String.valueOf(userId)});
+    }
+
+    public float getUserWeightById(int userId) {
+        Cursor cursor = mDatabase.rawQuery("SELECT " + User.WEIGHT + " FROM " + User.TABLE_NAME +
+                " WHERE " + User.ID + " = ?", new String[]{String.valueOf(userId)});
+
+        float weight = 0;
+        if (cursor.moveToFirst()) {
+            weight = Float.parseFloat(cursor.getString(0));
+        }
+        cursor.close();
+        return weight;
+    }
 }

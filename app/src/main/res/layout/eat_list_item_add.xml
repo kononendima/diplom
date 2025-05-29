@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/eat_list_item_add_btnAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

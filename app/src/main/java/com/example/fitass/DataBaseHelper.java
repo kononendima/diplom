@@ -10,12 +10,18 @@ import com.example.fitass.waterpage.WaterItem;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     static final int VERSION=1;
+
+    private static final String TABLE_NOTES = "notes";
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_TEXT = "text";
     private static final String DATABASE_NAME="DataBase.db";
     public DataBaseHelper(Context context){
         super(context,DATABASE_NAME,null,VERSION);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+
         db.execSQL("create table "+ Product.TABLE_NAME + " ("+
                 "_id integer primary key autoincrement, " +
                 Product.TITLE   + ", "+
@@ -55,6 +61,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "description TEXT, " +
                 "calories INTEGER, " +
                 "imageUrl TEXT);");
+
+        db.execSQL("CREATE TABLE notes (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "text TEXT, " +
+                "date TEXT)");
 
         // Пример вставки рецепта
         db.execSQL("INSERT INTO recipes (title, description, calories, imageUrl) VALUES " +

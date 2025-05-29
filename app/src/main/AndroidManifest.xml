@@ -45,6 +45,7 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name="com.example.fitass.receipeDetails.RecipeDetailActivity" />
         <activity android:name="com.example.fitass.receipe.RecipeListActivity" />
+        <activity android:name="com.example.fitass.note.NoteListActivity" />
 
     </application>
 

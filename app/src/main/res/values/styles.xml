@@ -5,10 +5,9 @@
     <style name="Theme.MyApp.Main" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
         <item name="android:statusBarColor">#BF6991</item>
-        <item name="colorButtonNormal">#CD8911</item>
     </style>
 
-    <style name="MyButton" parent="">
+    <style name="MyButton" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">#F2BF5E</item>
     </style>
     <style name="NavigationBar" parent="Widget.MaterialComponents.BottomNavigationView.Colored">

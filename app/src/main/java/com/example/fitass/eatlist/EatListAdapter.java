@@ -13,18 +13,21 @@ import com.example.fitAss.R;
 
 import java.util.List;
 
-public class EatListAdapter extends RecyclerView.Adapter<EatListAdapter.ViewHolder>{
+public class EatListAdapter extends RecyclerView.Adapter<EatListAdapter.ViewHolder> {
     private LayoutInflater inflater;
     private List<EatItem> eatItems;
     private EatItemManager eatItemManager;
+
     public EatListAdapter(Context context, List<EatItem> eatItems) {
         this.eatItems = eatItems;
         this.inflater = LayoutInflater.from(context);
-        eatItemManager=new EatItemManager(context);
+        eatItemManager = new EatItemManager(context);
     }
-    public void updateList(List<EatItem> eatItems){
-        this.eatItems=eatItems;
+
+    public void updateList(List<EatItem> eatItems) {
+        this.eatItems = eatItems;
     }
+
     @Override
     public EatListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
@@ -39,8 +42,8 @@ public class EatListAdapter extends RecyclerView.Adapter<EatListAdapter.ViewHold
         holder.eat.setText(eatItem.getEat());
 
         holder.date.setText(eatItem.getDate());
-        holder.calorie.setText(eatItem.getCalorie());
-        holder.weight.setText("Масса "+eatItem.getWeight()+" грамм");
+        holder.calorie.setText("Калорий: " + eatItem.getCalorie());
+        holder.weight.setText("Масса " + eatItem.getWeight() + " грамм");
         holder.imageView.setOnClickListener(v -> {
             eatItemManager.deleteEatItem(eatItem.getUuid());
             eatItems.remove(position);
@@ -56,16 +59,16 @@ public class EatListAdapter extends RecyclerView.Adapter<EatListAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView eat, date,calorie,weight;
+        TextView eat, date, calorie, weight;
         ImageView imageView;
 
-        ViewHolder(View view){
+        ViewHolder(View view) {
             super(view);
             eat = (TextView) view.findViewById(R.id.eatListItemType);
             date = (TextView) view.findViewById(R.id.eat_list_item_textViewDate);
             calorie = (TextView) view.findViewById(R.id.eat_list_item_textViewCalorie);
             weight = (TextView) view.findViewById(R.id.eatListItemTextViewWeight);
-            imageView=(ImageView) view.findViewById(R.id.eatListItemBtnCross);
+            imageView = (ImageView) view.findViewById(R.id.eatListItemBtnCross);
         }
     }
 }

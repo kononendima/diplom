@@ -7,10 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.fitass.DataBaseHelper;
 import com.example.fitass.UserManager;
-import com.example.fitass.eatlist.Product;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class WaterItemManager {
     private UserManager userManager;
@@ -58,4 +60,21 @@ public class WaterItemManager {
 
         return waterList;
     };
+
+    public int getTodayWater(String userId) {
+        int totalVolume = 0;
+
+        String today = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(new Date());
+
+        Cursor cursor = mDatabase.rawQuery(
+                "SELECT SUM(volume) FROM water_table WHERE user_id = " + userId + " AND date =\"" + today + "\"", null
+        );
+
+        if (cursor.moveToFirst()) {
+            totalVolume = cursor.isNull(0) ? 0 : cursor.getInt(0);
+        }
+
+        cursor.close();
+        return totalVolume;
+    }
 }
