@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:gravity="center_horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="24dp">
 
     <TextView
         android:id="@+id/textEmail"
-        android:text="email@example.com"
-        android:textSize="16sp"
-        android:layout_marginBottom="24dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="email@example.com"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textSteps"
-        android:text="10000 шагов"
-        android:textSize="16sp"
-        android:layout_marginBottom="24dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="10000 шагов"
+        android:textSize="16sp" />
 
     <LinearLayout
         android:id="@+id/weightContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginBottom="24dp"
         android:gravity="center_vertical"
-        android:layout_marginBottom="24dp">
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/buttonWeightMinus"
@@ -41,10 +41,10 @@
             android:id="@+id/editWeight"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:textSize="18sp"
+            android:layout_marginHorizontal="8dp"
             android:gravity="center"
-            android:layout_marginHorizontal="8dp" />
+            android:inputType="numberDecimal"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/buttonWeightPlus"
@@ -56,41 +56,67 @@
 
     <TextView
         android:id="@+id/textCalories"
-        android:text="1500 ккал"
-        android:textSize="16sp"
-        android:layout_marginBottom="24dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="1500 ккал"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/textVolume"
-        android:text="1500 мл"
-        android:textSize="16sp"
-        android:layout_marginBottom="24dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="1500 мл"
+        android:textSize="16sp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonMyRecipes"
-        android:text="Мои рецепты"
         style="@style/MyButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Мои рецепты" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonMyNotes"
+        style="@style/MyButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Мои заметки"
-        style="@style/MyButton"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="12dp"
+        android:text="Мои заметки" />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonLogout"
-        android:text="Выйти"
         style="@style/MyButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Выйти" />
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textSupport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Остались вопросы?"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textSupportEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:text="fitAss@mail.ru"
+            android:textSize="16sp" />
+    </LinearLayout>
 </LinearLayout>
