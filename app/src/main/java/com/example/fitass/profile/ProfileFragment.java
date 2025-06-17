@@ -122,7 +122,7 @@ public class ProfileFragment extends Fragment {
 
         double dailyCalories = calculateCalories(Double.parseDouble(user.getWeight()), Double.parseDouble(user.getHeight()), Integer.parseInt(user.getAge()), user.getLifestyle(), user.getGoal(), user.getGender());
 
-        textCalories.setText("Съедено: " + eatItemManager.getTodayCalories(String.valueOf(userManager.getCurrentUserIdFromMemory())) + " из " + dailyCalories + " ккал");
+        textCalories.setText("Съедено: " + eatItemManager.getTodayCalories(String.valueOf(userManager.getCurrentUserIdFromMemory())) + " из " + (int) dailyCalories + " ккал");
 
         editWeight.addTextChangedListener(new TextWatcher() {
             @Override
