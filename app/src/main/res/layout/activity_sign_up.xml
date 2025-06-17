@@ -1,122 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/activity_sign_up_buttonRegistration"
-        android:visibility="visible"
-        android:layout_width="237dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="156dp"
-        android:text="Зарегестрироваться"
-        style="@style/MyButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="484dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:layout_height="match_parent">
 
-        <TextView
-            style="@style/EditText"
-            android:id="@+id/activity_sign_up_textViewLogin"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="Введите логин:"
-            android:textSize="24sp" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/activity_sign_up_buttonRegistration"
+            style="@style/MyButton"
+            android:layout_width="237dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:text="Зарегестрироваться"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-        <EditText
-            style="@style/EditText"
-            android:id="@+id/activity_sign_up_editTextLogin"
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TextView
+                android:id="@+id/activity_sign_up_textViewLogin"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Введите логин:"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/activity_sign_up_editTextLogin"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/activity_sign_up_textViewPassword"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Придумайте пароль"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/activity_sign_up_editTextPassword"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/activity_sign_up_textViewAge"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Возраст"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/activity_sign_up_editTextAge"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/activity_sign_up_textViewGender"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Пол (муж/жен)"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/activity_sign_up_editTextGender"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/activity_sign_up_textViewHeight"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Введите свой рост"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/activity_sign_up_editTextHeight"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/activity_sign_up_textViewWeight"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Введи свой вес (кг)"
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/activity_sign_up_editTextWeight"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/activity_sign_up_textViewLifestyle"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:text="Выберите свой образ жизни"
+                android:textSize="24sp" />
+
+            <Spinner
+                android:id="@+id/activity_sign_up_spinnerLifestyle"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown" />
+
+            <TextView
+                android:id="@+id/activity_sign_up_textViewGoal"
+                style="@style/EditText"
+
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="12dp"
+                android:text="Цель"
+                android:textSize="24sp" />
+
+            <Spinner
+                android:id="@+id/activity_sign_up_spinnerGoal"
+                style="@style/EditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:spinnerMode="dropdown" />
+
+        </LinearLayout>
 
         <TextView
-            style="@style/EditText"
-            android:id="@+id/activity_sign_up_textViewPassword"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="Придумайте пароль"
-            android:textSize="24sp" />
-
-        <EditText
-            style="@style/EditText"
-            android:id="@+id/activity_sign_up_editTextPassword"
-            android:layout_width="match_parent"
+            android:id="@+id/activity_sign_up_textViewError"
+            android:layout_width="237dp"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            style="@style/EditText"
-            android:id="@+id/activity_sign_up_textViewHeight"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="Введите свой рост"
-            android:textSize="24sp" />
-
-        <EditText
-            style="@style/EditText"
-            android:id="@+id/activity_sign_up_editTextHeight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            style="@style/EditText"
-            android:id="@+id/activity_sign_up_textViewWeight"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="Введи свой вес (кг)"
-            android:textSize="24sp" />
-
-        <EditText
-            style="@style/EditText"
-            android:id="@+id/activity_sign_up_editTextWeight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            style="@style/EditText"
-            android:id="@+id/activity_sign_up_textViewLifestyle"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:text="Выберите свой образ жизни"
-            android:textSize="24sp" />
-
-        <Spinner
-            style="@style/EditText"
-            android:id="@+id/activity_sign_up_spinnerLifestyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:spinnerMode="dropdown" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/activity_sign_up_textViewError"
-        android:layout_width="237dp"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/activity_sign_up_buttonRegistration"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.875" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:gravity="center_horizontal"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/activity_sign_up_buttonRegistration"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintVertical_bias="0.875" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

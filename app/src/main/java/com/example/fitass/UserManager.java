@@ -2,6 +2,7 @@ package com.example.fitass;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -27,6 +28,9 @@ public class UserManager  {
         values.put(User.HEIGHT, user.getHeight());
         values.put(User.WEIGHT, user.getWeight());
         values.put(User.LIFESTYLE, user.getLifestyle());
+        values.put(User.GOAL, user.getGoal());
+        values.put(User.AGE, user.getAge());
+        values.put(User.GENDER, user.getGender());
         return values;
     }
 
@@ -37,23 +41,28 @@ public class UserManager  {
 
     public User checkRegistration(String login, String password) {
         user = new User();
-        Cursor cursor = mDatabase.rawQuery("SELECT * from " + User.TABLE_NAME + " WHERE (login = '" + login + "' and password = '" + password + "');", null);
-        if (cursor.getCount() == 0) {
-            return null;
+
+        Cursor cursor = mDatabase.rawQuery(
+                "SELECT _id, login, password, height, weight, age, gender FROM " + User.TABLE_NAME +
+                        " WHERE login = ? AND password = ?", new String[]{login, password});
+
+        if (cursor.moveToFirst()) {
+            user.setId(cursor.getString(cursor.getColumnIndexOrThrow("_id")));
+            user.setLogin(cursor.getString(cursor.getColumnIndexOrThrow("login")));
+            user.setPassword(cursor.getString(cursor.getColumnIndexOrThrow("password")));
+            user.setHeight(cursor.getString(cursor.getColumnIndexOrThrow("height")));
+            user.setWeight(cursor.getString(cursor.getColumnIndexOrThrow("weight")));
+            user.setAge(cursor.getString(cursor.getColumnIndexOrThrow("age")));
+            user.setGender(cursor.getString(cursor.getColumnIndexOrThrow("gender")));
         } else {
-            if (cursor.moveToFirst()) {
-                do {
-                    user.setId(cursor.getString(0));
-                    user.setLogin(cursor.getString(1));
-                    user.setPassword(cursor.getString(2));
-                    user.setHeight(cursor.getString(3));
-                    user.setWeight(cursor.getString(4));
-                } while (cursor.moveToNext());
-            }
             cursor.close();
-            return user;
+            return null;
         }
+
+        cursor.close();
+        return user;
     }
+
 
     public void saveToMemoryUserData(String login, String password, String height, String weight){
         SharedPreferences sPref;
@@ -84,6 +93,16 @@ public class UserManager  {
         return weight;
     }
 
+    public String getCurrentUserGender() {
+        sPref = mContext.getSharedPreferences("Data", Context.MODE_PRIVATE);
+        return sPref.getString("gender", "unknown");
+    }
+
+    public int getCurrentUserAge() {
+        sPref = mContext.getSharedPreferences("Data", Context.MODE_PRIVATE);
+        return Integer.parseInt(sPref.getString("age", "0"));
+    }
+
     public int getCurrentUserHeightFromMemory(){
         sPref = mContext.getSharedPreferences("Data",Context.MODE_PRIVATE);
         int height = Integer.parseInt(sPref.getString("height","0"));
@@ -106,5 +125,27 @@ public class UserManager  {
         }
         cursor.close();
         return weight;
+    }
+
+    @SuppressLint("Range")
+    public User getUserById(int userId) {
+        Cursor cursor = mDatabase.rawQuery("SELECT * FROM " + User.TABLE_NAME + " WHERE " + User.ID + " = ?", new String[]{String.valueOf(userId)});
+        User user = null;
+
+        if (cursor.moveToFirst()) {
+            user = new User();
+            user.setId(cursor.getString(cursor.getColumnIndex(User.ID)));
+            user.setLogin(cursor.getString(cursor.getColumnIndex(User.LOGIN)));
+            user.setPassword(cursor.getString(cursor.getColumnIndex(User.PASSWORD)));
+            user.setHeight(cursor.getString(cursor.getColumnIndex(User.HEIGHT)));
+            user.setWeight(cursor.getString(cursor.getColumnIndex(User.WEIGHT)));
+            user.setLifestyle(cursor.getString(cursor.getColumnIndex(User.LIFESTYLE)));
+            user.setGoal(cursor.getString(cursor.getColumnIndex(User.GOAL)));
+            user.setGender(cursor.getString(cursor.getColumnIndex(User.GENDER)));
+            user.setAge(cursor.getString(cursor.getColumnIndex(User.AGE)));
+        }
+
+        cursor.close();
+        return user;
     }
 }

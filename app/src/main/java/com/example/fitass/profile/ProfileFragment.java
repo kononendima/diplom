@@ -18,6 +18,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 
 import com.example.fitAss.R;
+import com.example.fitass.User;
 import com.example.fitass.UserManager;
 import com.example.fitass.activitypage.ActivityListManager;
 import com.example.fitass.eatlist.EatItemManager;
@@ -116,6 +117,13 @@ public class ProfileFragment extends Fragment {
             }
         };
 
+
+        User user = userManager.getUserById(userId);
+
+        double dailyCalories = calculateCalories(Double.parseDouble(user.getWeight()), Double.parseDouble(user.getHeight()), Integer.parseInt(user.getAge()), user.getLifestyle(), user.getGoal(), user.getGender());
+
+        textCalories.setText("Съедено: " + eatItemManager.getTodayCalories(String.valueOf(userManager.getCurrentUserIdFromMemory())) + " из " + dailyCalories + " ккал");
+
         editWeight.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -136,4 +144,36 @@ public class ProfileFragment extends Fragment {
 
         return view;
     }
+
+    private double calculateCalories(double weight, double height, int age, String lifestyle, String goal, String gender) {
+        double bmr;
+        double activityCoefficient = 1.2;
+
+        if (lifestyle.equals("средний")) activityCoefficient = 1.55;
+        else if (lifestyle.equals("активный")) activityCoefficient = 1.725;
+
+        if (goal.equals("похудеть")) {
+            bmr = gender.equals("мужчина") ?
+                    (10 * weight + 6.25 * height - 5 * age + 5) :
+                    (10 * weight + 6.25 * height - 5 * age - 161);
+
+        } else if (goal.equals("набрать массу")) {
+            bmr = gender.equals("мужчина") ?
+                    (88.362 + 13.397 * weight + 4.799 * height - 5.677 * age) * activityCoefficient :
+                    (447.593 + 9.247 * weight + 3.098 * height - 4.330 * age) * activityCoefficient;
+
+        } else { // поддерживать вес
+            if (gender.equals("мужчина")) {
+                if (lifestyle.equals("сидячий")) bmr = weight * 31 + 375;
+                else if (lifestyle.equals("средний")) bmr = weight * 33 + 415;
+                else bmr = weight * 35 + 500;
+            } else {
+                if (lifestyle.equals("сидячий")) bmr = weight * 27 + 375;
+                else if (lifestyle.equals("средний")) bmr = weight * 29 + 415;
+                else bmr = weight * 31 + 500;
+            }
+        }
+        return Math.round(bmr);
+    }
+
 }

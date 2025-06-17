@@ -47,13 +47,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "steps"+","+
                 "date"+")");
 
-        db.execSQL("create table "+User.TABLE_NAME+" ("+
-                "_id integer primary key autoincrement, " +
-                User.LOGIN+ ", "+
-                User.PASSWORD+","+
-                User.HEIGHT+","+
-                User.WEIGHT+","+
-                User.LIFESTYLE+")");
+        db.execSQL("CREATE TABLE " + User.TABLE_NAME + " (" +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                User.LOGIN + " TEXT, " +
+                User.PASSWORD + " TEXT, " +
+                User.HEIGHT + " TEXT, " +
+                User.WEIGHT + " TEXT, " +
+                User.LIFESTYLE + " TEXT, " +
+                User.GOAL + " TEXT, " +
+                User.GENDER + " TEXT, " +
+                User.AGE + " TEXT" +
+                ")");
+
 
         db.execSQL("CREATE TABLE recipes (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -67,7 +72,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "text TEXT, " +
                 "date TEXT)");
 
-        // Пример вставки рецепта
         db.execSQL("INSERT INTO recipes (title, description, calories, imageUrl) VALUES " +
                 "('Овсянка с ягодами', 'Вкусная и полезная овсяная каша с свежими ягодами и мёдом.', 350, 'https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?auto=format&fit=crop&w=800&q=80')");
 

@@ -10,6 +10,12 @@ public class User {
     public static final String HEIGHT = "height";
     public static final String WEIGHT = "weight";
     public static final String LIFESTYLE = "lifestyle";
+    public static final String GOAL = "goal";
+    public static final String GENDER = "gender";
+    public static final String AGE = "age";
+
+    String gender;
+    String age;
 
     String id;
     String login;
@@ -19,6 +25,8 @@ public class User {
     String height;
     String weight;
     String lifestyle;
+    String goal;
+
     public User() {
     }
 
@@ -34,12 +42,19 @@ public class User {
         return calorieId;
     }
 
+    public String getGoal() {
+        return goal;
+    }
+
     public void setcalorieId(String calorieId) {
         this.calorieId = calorieId;
     }
 
+    public void setGoal(String goal) {
+        this.goal = goal;
+    }
 
-    public User(String id, String login, String password, String stepsId, String calorieId, String height, String weight, String lifestyle) {
+    public User(String id, String login, String password, String stepsId, String calorieId, String height, String weight, String lifestyle, String goal, String gender, String age) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -48,6 +63,25 @@ public class User {
         this.height = height;
         this.weight = weight;
         this.lifestyle = lifestyle;
+        this.goal = goal;
+        this.gender = gender;
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
     }
 
     public String getId() {
@@ -58,8 +92,7 @@ public class User {
         this.id = id;
     }
 
-    public User(String login, String password, String stepsId, String calorieId, String height, String weight, String lifestyle) {
-
+    public User(String login, String password, String stepsId, String calorieId, String height, String weight, String lifestyle, String goal) {
         this.login = login;
         this.password = password;
         this.stepsId = stepsId;
@@ -67,6 +100,7 @@ public class User {
         this.height = height;
         this.weight = weight;
         this.lifestyle = lifestyle;
+        this.goal = goal;
     }
 
     public String getLogin() {
